@@ -1,0 +1,33 @@
+@import '../theme';
+
+.reviewProgressWrap {
+
+  .reviewProgressItem {
+    display: flex;
+    padding: 0 30px;
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+
+    .lPart {
+
+    }
+    .rPart {
+      padding-left: 20px;
+    }
+  }
+
+  .btn {
+    width: 300px;
+    height: 44px;
+    line-height: 44px;
+    background: #fff;
+    border-radius: 5px;
+    color: $default-blue;
+    font-size: 16px;
+    border: 1px solid $default-blue;
+    text-align: center;
+    margin: 40px auto 40px;
+  }
+}
