@@ -1,7 +1,7 @@
-import React, {memo} from "react";
+import {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 
-const reviewProgressJsx: React.FC = () => {
+const reviewProgressJsx= () => {
   const {View} = useComponent();
 
   return (
@@ -26,6 +26,7 @@ const reviewProgressJsx: React.FC = () => {
       <View className={'btn'}>
         重新审核
       </View>
+
     </View>
   )
 }

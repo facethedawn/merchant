@@ -1,14 +1,16 @@
-import React, {memo} from "react";
+import {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {AccountForm, AccountTitle} from "../components";
+import {AccountAgreement, AccountForm, AccountTitle} from "../components";
+import {config} from './config';
 
-const regJsx: React.FC = () => {
+
+const regJsx = () => {
   const {View} = useComponent();
-
   return (
     <View>
       <AccountTitle title={'注册'}/>
       <AccountForm type={'reg'}/>
+      <AccountAgreement config={config}/>
     </View>
   )
 }

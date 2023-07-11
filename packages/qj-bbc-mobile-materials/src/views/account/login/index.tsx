@@ -1,8 +1,8 @@
-import React, {memo} from "react";
+import {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 import {AccountForm, AccountTitle} from "../components";
 
-const loginJsx: React.FC = () => {
+const loginJsx = () => {
   const {View} = useComponent();
 
   return (
