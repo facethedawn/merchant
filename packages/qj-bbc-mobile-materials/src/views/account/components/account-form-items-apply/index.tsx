@@ -3,6 +3,7 @@ import {useComponent, antdMobile} from '@brushes/simulate-component';
 import {UpdateImg} from "../update-img";
 import {PickAddress} from "../pick-address";
 import {ValidityPeriod} from "../validity-period";
+import {PickClassify} from "../pick-classify";
 // import {mobileRex, checkPwd } from "../../../../utils";
 
 const accountFormItemsApplyJsx:React.FC = () => {
@@ -149,6 +150,22 @@ const accountFormItemsApplyJsx:React.FC = () => {
             clearable
             placeholder={'请输入企业详细地址'}
           />
+        </Form.Item>
+      </View>
+
+      {/*商品品牌*/}
+      <View className={'accountFormApplyItem'}>
+        <Form.Item
+          name={'account11'}
+          label={'商品类目'}
+          rules={[
+            {
+              required: true,
+              message: `商品类目不能为空`
+            },
+          ]}
+        >
+          <PickClassify/>
         </Form.Item>
       </View>
 

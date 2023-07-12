@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react";
-// import {queryDocListPage} from 'qj-bbc-api';
+import {queryResourceGoodsPagePaltForMerchantEnter} from 'qj-bbc-api';
 
 
 export const useTestStore = () => {
   const [info, setInfo] = useState('test store');
   useEffect(() => {
-    // queryDocListPage().then(res => {
-    //   console.log(9, res);
-    // })
+    queryResourceGoodsPagePaltForMerchantEnter().then(res => {
+      console.log(19, res);
+    })
   })
 
   return {

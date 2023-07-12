@@ -1,13 +1,15 @@
 import { Component, PropsWithChildren } from 'react'
+import {safeArea} from "@/utils";
 
 import './app.scss'
 
 class App extends Component<PropsWithChildren, any> {
 
-
-  componentDidShow () {
-
+  componentDidMount() {
+    safeArea();
   }
+
+  componentDidShow () {}
 
   componentDidHide () {}
 

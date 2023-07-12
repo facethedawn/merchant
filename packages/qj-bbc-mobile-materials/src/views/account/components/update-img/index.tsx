@@ -1,8 +1,8 @@
-import {memo} from "react";
+import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 import {useAccountForm} from 'qj-bbc-mobile-store';
 
-const updateImgJsx = () => {
+const updateImgJsx:React.FC = () => {
   const {View} = useComponent();
   const {chooseImg} = useAccountForm();
 

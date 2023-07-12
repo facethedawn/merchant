@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {useAccountForm, useAgreement} from 'qj-bbc-mobile-store';
+import {useAgreement} from 'qj-bbc-mobile-store';
 
 interface configItem {
   label: string,
@@ -8,13 +8,14 @@ interface configItem {
 }
 
 interface accountAgreementType {
-  config: configItem[]
+  config: configItem[],
+  changeLockForm: any,
+  lockForm: any
 }
 
-const accountAgreementJsx: React.FC<accountAgreementType> = ({config}) => {
+const accountAgreementJsx: React.FC<accountAgreementType> = ({config,changeLockForm, lockForm}) => {
   const {View, Checkbox, CheckboxGroup} = useComponent();
   const {goAgreement} = useAgreement();
-  const {changeLockForm, lockForm} = useAccountForm();
 
 
   return (

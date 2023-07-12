@@ -4,4 +4,4 @@ export * from './account';
 export * from './goods-list';
 
 
-import '../style/index.scss'
+// import '../style/index.scss'

@@ -1,6 +1,7 @@
 import { useLoad } from '@tarojs/taro'
-import { Test } from 'qj-bbc-mobile-materials';
+import {OrderList} from 'qj-bbc-mobile-materials';
 import './index.scss'
+import {PageWrap} from "@/components";
 
 export default function Index() {
 
@@ -10,7 +11,9 @@ export default function Index() {
 
   return (
     <>
-      <Test/>
+      <PageWrap>
+        <OrderList/>
+      </PageWrap>
     </>
   )
 }

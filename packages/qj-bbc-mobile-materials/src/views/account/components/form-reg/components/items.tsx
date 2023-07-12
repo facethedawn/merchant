@@ -1,8 +1,9 @@
 import {memo} from "react";
 import {useComponent, antdMobile} from '@brushes/simulate-component';
-import {mobileRex, checkPwd } from "../../../../utils";
+import {mobileRex, checkPwd } from "../../../../../utils";
+import {CodeItem} from "./codeItem";
 
-const accountFormItemsRegJsx = () => {
+const regItemsJsx = ({form}: any) => {
   const {View} = useComponent();
   const {Form, Input} = antdMobile;
 
@@ -12,7 +13,7 @@ const accountFormItemsRegJsx = () => {
       {/*手机号*/}
       <View className={'accountFormItem'}>
         <Form.Item
-          name={'account'}
+          name={'userPhone'}
           rules={[
             {
               required: true,
@@ -35,7 +36,7 @@ const accountFormItemsRegJsx = () => {
       {/*密码*/}
       <View className={'accountFormItem'}>
         <Form.Item
-          name={'account1'}
+          name={'userPwsswd'}
           rules={[
             {
               required: true,
@@ -57,7 +58,7 @@ const accountFormItemsRegJsx = () => {
       {/*再次输入密码*/}
       <View className={'accountFormItem'}>
         <Form.Item
-          name={'account12'}
+          name={'userPwsswdAgin'}
           rules={[
             {
               required: true,
@@ -75,8 +76,12 @@ const accountFormItemsRegJsx = () => {
           />
         </Form.Item>
       </View>
+
+      <View className={'accountFormItem'}>
+        <CodeItem form={form} type={'reg'}/>
+      </View>
     </View>
   )
 }
 
-export const AccountFormItemsReg = memo(accountFormItemsRegJsx);
+export const RegItems = memo(regItemsJsx);

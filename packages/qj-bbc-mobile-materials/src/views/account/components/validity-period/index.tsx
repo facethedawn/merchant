@@ -6,17 +6,18 @@ const validityPeriodJsx: React.FC = () => {
   const {View, Picker} = useComponent();
   const {startTime, selectStart, endTime, selectEnd} = useAccountForm();
 
+
   return (
     <View>
       <Picker mode='date' onChange={selectStart}>
         {
-          startTime.label === '' ? '请选择开始时间' : startTime
+          startTime.label === '' ? '请选择开始时间' : startTime.label
         }
       </Picker>
       -
       <Picker mode='date' onChange={selectEnd}>
         {
-          startTime.label === '' ? '请选择结束时间' : endTime
+          endTime.label === '' ? '请选择结束时间' : endTime.label
         }
       </Picker>
     </View>
