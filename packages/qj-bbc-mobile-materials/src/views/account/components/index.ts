@@ -6,3 +6,5 @@ export * from './account-form-submit-btn';
 export * from './validity-period';
 export * from './account-agreement';
 export * from './form-reg';
+export * from './form-mobile-login';
+export * from './form-account-login';

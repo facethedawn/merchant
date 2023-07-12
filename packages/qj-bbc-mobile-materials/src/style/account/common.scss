@@ -1,6 +1,8 @@
+@import "../theme";
+
 .accountTitle {
   margin-left: 33px;
-  margin-top: 65px;
+  padding-top: 65px;
   margin-bottom: 50px;
   font-size: 23px;
   font-weight: bold;
@@ -71,7 +73,7 @@
 
   .agreement {
     display: inline-block;
-    color: #003ea5;
+    color: $default-blue;
   }
 
   .wx-checkbox-input {
@@ -81,11 +83,19 @@
   }
 
   .wx-checkbox-input.wx-checkbox-input-checked {
-    background-color: #003ea5;
+    background-color: $default-blue;
   }
 
   .wx-checkbox-input.wx-checkbox-input-checked::before {
     color: #ffffff;
     font-size: 14px;
   }
+}
+
+.linkWrap {
+  padding: 0 36px;
+  display: flex;
+  justify-content: space-between;
+  color: $default-blue;
+  font-size: 14px;
 }

@@ -1,6 +1,7 @@
 export default defineAppConfig({
   pages: [
     'account/auth/index',
+    'account/mobileLogin/index',
     'account/apply/index',
     'pages/goods-list/index',
     'account/register/index',

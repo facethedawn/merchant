@@ -1,10 +1,10 @@
 import {PageWrap} from "@/components";
-import {AccountLogin} from 'qj-bbc-mobile-materials';
+import {MobileLogin} from 'qj-bbc-mobile-materials';
 
 export default function Index() {
   return (
     <PageWrap>
-      <AccountLogin />
+      <MobileLogin />
     </PageWrap>
   )
 }

@@ -5,11 +5,13 @@ const MERCHANT = {
   SEND_PHONE: '/web/ml/muser/sendPhone.json', // 发送手机验证码
   GET_PHONE_FOR_PLA_REG_SC: '/web/ml/muser/getPhoneForPlaRegSc.json', // 检测手机
   SAVE_USER_MERCHANT_BY_QUALITY: '/web/um/userMerchant/saveUserMerchantByQuality.json', // 注册
+  WARRANTY_MERCHANT_LOGIN: '/web/ml/mlogin/warrantyMerchantLogin.json', // 登录
   QUERY_MERCHANT_BRAND_PAGE: '/web/rs/brand/queryMerchantBrandPage.json', // 申请入驻获取商品品牌
   SAVE_UM_USER_PHONE_NO_CODE_BY_WX: '/web/ml/muser/saveUmuserPhoneNoCodeByWX.json', // 手机号直接登录
   QUERY_CLASSTREE_PAGE: '/web/rs/classtree/queryClasstreePage.json', // 申请入驻获取商品类目
   QUERY_RESOURCE_GOODS_PAGE_PLAT_FOR_MERCHANT_ENTER: '/web/cms/doclist/queryDoclistPage.json', // 文章列表,
 }
+export const warrantyMerchantLogin = (params = {}) => post(MERCHANT.WARRANTY_MERCHANT_LOGIN, params);
 
 export const saveUserMerchantByQuality = (params = {}) => post(MERCHANT.SAVE_USER_MERCHANT_BY_QUALITY, params);
 

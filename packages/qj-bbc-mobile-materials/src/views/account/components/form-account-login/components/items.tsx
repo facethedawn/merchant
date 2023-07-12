@@ -1,9 +1,8 @@
 import {memo} from "react";
 import {useComponent, antdMobile} from '@brushes/simulate-component';
-import {mobileRex, checkPwd } from "../../../../../utils";
-import {CodeItem} from "../../code-item/codeItem";
+import {checkPwd, mobileRex} from "../../../../../utils";
 
-const regItemsJsx = ({form}: any) => {
+const accountLoginItemsJsx = ({form}: any) => {
   const {View} = useComponent();
   const {Form, Input} = antdMobile;
 
@@ -32,11 +31,10 @@ const regItemsJsx = ({form}: any) => {
         </Form.Item>
       </View>
 
-
       {/*密码*/}
       <View className={'accountFormItem'}>
         <Form.Item
-          name={'userPwsswd'}
+          name={'pwd'}
           rules={[
             {
               required: true,
@@ -55,33 +53,9 @@ const regItemsJsx = ({form}: any) => {
         </Form.Item>
       </View>
 
-      {/*再次输入密码*/}
-      <View className={'accountFormItem'}>
-        <Form.Item
-          name={'userPwsswdAgin'}
-          rules={[
-            {
-              required: true,
-              message: `密码不能为空`
-            },
-            {
-              validator: checkPwd
-            }
-          ]}
-        >
-          <Input
-            clearable
-            placeholder={'请输入密码'}
-            type='password'
-          />
-        </Form.Item>
-      </View>
 
-      <View className={'accountFormItem'}>
-        <CodeItem form={form} type={'reg'}/>
-      </View>
     </View>
   )
 }
 
-export const RegItems = memo(regItemsJsx);
+export const AccountLoginItems = memo(accountLoginItemsJsx);

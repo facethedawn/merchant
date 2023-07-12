@@ -5,3 +5,4 @@ export * from './usePickClassify';
 export * from './useApplyForm';
 export * from './useRegForm';
 export * from './useCode';
+export * from './useLogin';

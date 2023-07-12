@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import {View} from '@tarojs/components';
-import {useCode} from 'qj-bbc-mobile-store';
+import {useCode} from '../../../../../../qj-bbc-mobile-store';
 
 interface codeWrapType  {
   form: any
