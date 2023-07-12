@@ -11,7 +11,7 @@ interface formRegJsxType {
 const formRegJsx: React.FC<formRegJsxType> = ({lockForm}) => {
   const {View} = useComponent();
   const {Form} = antdMobile;
-  const {form, onFinish} = useRegForm()
+  const {form, onFinish} = useRegForm({lockForm})
 
 
   return (

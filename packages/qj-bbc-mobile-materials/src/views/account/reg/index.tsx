@@ -12,7 +12,6 @@ const regJsx = () => {
     <View>
       <AccountTitle title={'注册'}/>
       <FormReg lockForm={lockForm} />
-      {/*<AccountForm type={'reg'}/>*/}
       <AccountAgreement config={config} changeLockForm={changeLockForm} lockForm={lockForm}/>
     </View>
   )
