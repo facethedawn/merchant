@@ -1,0 +1,56 @@
+@import '../theme';
+
+.order-item {
+  padding: 12px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+
+  .order-status {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 12px;
+
+    .red {
+      color: $color-red;
+    }
+
+    .orange {
+      color: $color-green;
+    }
+
+    .blue {
+      color: $default-color;
+    }
+
+    .green {
+      color: $color-green;
+    }
+
+    .grey {
+      color: $font-sub-color;
+    }
+  }
+
+  .order-item-info {
+    color: $font-sub-color;
+    line-height: 18px;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+
+  .order-item-info-price {
+    color: $font-color;
+    font-size: 12px;
+    display: flex;
+    margin-bottom: 16px;
+
+    .blc {
+      margin-right: 8px;
+    }
+  }
+
+  .btn {
+    justify-content: center;
+  }
+}

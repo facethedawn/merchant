@@ -1,16 +1,12 @@
-// @ts-nocheck
 import React, {memo} from "react";
-import {useComponent, antdMobile} from '@brushes/simulate-component';
-import {jumpLink, showModal, useTestStore} from 'qj-bbc-mobile-store';
-import {Popup} from "../common";
+import {useComponent} from '@brushes/simulate-component';
+import {config} from './config';
+import {OrderItem, Search} from "../common";
 
-const { SideBar } = antdMobile;
 
 const orderListJsx:React.FC = () => {
   const {View, ScrollView} = useComponent();
-  const {info} = useTestStore();
 
-  console.log(13, info);
   return (
     <ScrollView
       scrollY
@@ -18,26 +14,21 @@ const orderListJsx:React.FC = () => {
         height: '100%'
       }}
     >
-      <View className={'goodsList'}>
+      <Search />
+      <View className={'order-list'}>
+        <View className={'tab'}>
+          {
+            config.map((item, index) => {
+              return (
+                <View className={'tab-item active'} key={index}>{item.label}</View>
+              )
+            })
+          }
+        </View>
 
-        商品列表
-
-        <View onClick={jumpLink}>button</View>
-
-        <View onClick={showModal.bind(null, '123123', '213')}>modal</View>
-
-        {/*<Popup/>*/}
-
-        <SideBar
-          style={{
-            '--width': '90px',
-            '--background-color': '#f5f5f5'
-          }}
-        >
-
-        </SideBar>
-
-
+        <View className={'order-content'}>
+          <OrderItem/>
+        </View>
       </View>
     </ScrollView>
   )

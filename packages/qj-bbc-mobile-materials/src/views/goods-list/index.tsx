@@ -9,9 +9,6 @@ const goodsListJsx: React.FC = () => {
   const {sysBtnObj} = useCommonSearch()
   const {list, all} = useGoodsList({param: '', refreshNum: 0});
 
-  console.log(12, list, all);
-
-
   return (
     <View className={'goods-list'}>
       <Search/>
