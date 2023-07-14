@@ -1,18 +1,56 @@
+@import '../theme';
+
 .goods-list {
   height: 100%;
-
-  .side-bar-item {
-    //font-size: 1000px;
-  }
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-color;
 
   .goods-list-content {
-    height: calc(100% - 100px);
     display: flex;
 
-    .side-bar {
+    .side-bar-wrap {
       width: 90px;
-      background: gray;
       height: 100%;
+      background-color: #FFFFFF;
+
+      .side-bar {
+        background-color: $bg-color;
+        height: 100%;
+
+        .side-bar-item {
+          height: 45px;
+          background: $bg-color;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $font-color;
+          font-size: 14px;
+          padding: 0 5px;
+          box-sizing: border-box;
+
+        }
+
+        .highlight {
+          background-color: #FFFFFF;
+          overflow: hidden;
+          font-weight: 500;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+
+          & + .side-bar-item {
+            border-top-right-radius: 10px;
+          }
+        }
+
+        .text {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          -o-text-overflow: ellipsis;
+        }
+
+      }
     }
 
     .side-content {
@@ -20,14 +58,39 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      background-color: #FFFFFF;
 
       .dashboard {
-        height: 100px;
-        background-color: yellowgreen;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        font-size: 12px;
+
+
+        .allGoods {
+          color: $font-sub-color;
+        }
+
+        .filter {
+          display: flex;
+          align-items: center;
+
+          .icon {
+            width: 14px;
+            margin-right: 2px;
+          }
+        }
       }
 
       .goods-wrap {
-        flex: 1;
+        height: calc(100% - 45px);
+
+        .goods-item-wrap {
+          padding: 0 16px 30px;
+          box-sizing: border-box;
+        }
       }
     }
   }

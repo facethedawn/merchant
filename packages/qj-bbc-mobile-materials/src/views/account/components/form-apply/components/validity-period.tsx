@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {useAccountForm} from 'qj-bbc-mobile-store';
+import {useAccountForm} from '../../../../../../../qj-bbc-mobile-store';
 
 const validityPeriodJsx: React.FC = () => {
   const {View, Picker} = useComponent();

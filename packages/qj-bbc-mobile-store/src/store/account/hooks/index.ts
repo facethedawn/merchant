@@ -6,3 +6,4 @@ export * from './useApplyForm';
 export * from './useRegForm';
 export * from './useCode';
 export * from './useLogin';
+export * from './useApply';

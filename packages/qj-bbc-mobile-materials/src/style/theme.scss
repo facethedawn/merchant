@@ -1,1 +1,25 @@
-$default-blue: #003ea5
+
+$bg-color: #F9FAFB;
+
+$default-color: #3986F6;
+
+$font-color: #394259;
+
+$font-sub-color: #888E9B;
+
+$color-red: #ED4444;
+
+$color-line: #EAEAEA;
+
+
+
+.default-btn {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  background-color: $default-color;
+  padding: 0 30px;
+  color: #FFFFFF;
+  border-radius: 34px;
+}

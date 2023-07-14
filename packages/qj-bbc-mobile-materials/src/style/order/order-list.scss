@@ -1,0 +1,95 @@
+@import '../theme';
+
+.order-detail {
+  background-color: $bg-color;
+  padding-top: 16px;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+
+
+  .address {
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 17px;
+    background-color: #FFFFFF;
+
+
+    .icon {
+      width: 22px;
+      margin-right: 16px;
+    }
+
+    .info {
+      .user-info {
+        font-size: 16px;
+        font-weight: 500;
+        color: $font-color;
+        display: flex;
+        margin-bottom: 8px;
+
+        .user-name {
+          margin-right: 16px;
+        }
+      }
+
+      .user-address {
+        font-size: 14px;
+        color: $font-sub-color;
+      }
+    }
+  }
+
+  .goods-info {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+
+  .order-info {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    padding: 16px;
+    margin-bottom: 16px;
+
+    .order-info-item {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+
+      &.all-price {
+        border-top: 1px solid $color-line;
+        padding-top: 15px;
+
+        .rPart {
+          color: $color-red;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+
+      .lPart {
+        font-size: 12px;
+        color: $font-color;
+
+
+      }
+
+      .rPart {
+        font-size: 12px;
+        color: $font-sub-color;
+      }
+
+      .tip {
+        color: $default-color;
+      }
+    }
+  }
+}

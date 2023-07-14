@@ -5,7 +5,7 @@ export const routerMap = {
   mobileLogin: '/account/mobileLogin/index',
   accountLogin: '/account/accountLogin/index',
   agreement: '/account/agreement/index',
-  goodList: 'pages/goods-list/index',
+  goodList: '/pages/goods-list/index',
   // 'pages/index/index',
   // 'pages/mine/index',
   // 'pages/detail/index',

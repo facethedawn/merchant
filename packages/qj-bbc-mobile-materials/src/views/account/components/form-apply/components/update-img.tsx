@@ -1,14 +1,12 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {useAccountForm} from 'qj-bbc-mobile-store';
 
-const updateImgJsx:React.FC = () => {
+const updateImgJsx:React.FC<any> = ({handle}) => {
   const {View} = useComponent();
-  const {chooseImg} = useAccountForm();
 
   return (
     <View className={'accountFormImg'}>
-      <View className={'select'} onClick={chooseImg}>选择图片</View>
+      <View className={'select'} onClick={handle}>选择图片</View>
     </View>
   )
 }

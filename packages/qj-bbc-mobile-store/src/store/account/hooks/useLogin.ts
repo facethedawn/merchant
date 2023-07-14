@@ -4,11 +4,12 @@ import {Form} from 'antd-mobile';
 import {warrantyMerchantLogin} from 'qj-bbc-api';
 import {getTaro} from '@brushes/utils';
 import {routerMap} from '../../../router-map';
-import {jumpLink} from "../../../utils";
+import {jumpLink, jumpTabBar} from "../../../utils";
 
 const Taro = getTaro();
 
 export const useLogin = () => {
+
   const [form] = Form.useForm();
 
   const onFinish = (formVal: any) => {
@@ -20,7 +21,12 @@ export const useLogin = () => {
             ...formVal,
             js_code: res.code
           })
-          console.log(11, result)
+
+          const userInfo = JSON.parse(result.dataObj.userInfo);
+
+          Taro.setStorageSync('saas-token', userInfo.ticketTokenid);
+          console.log(11, userInfo);
+          jumpTabBar(routerMap.goodList)
         } catch (err) {
           console.log(err)
         }
@@ -35,6 +41,7 @@ export const useLogin = () => {
   }
 
   const goAccountLogin = () => {
+    // jumpLink(routerMap.apply);
     jumpLink(routerMap.accountLogin);
   }
 

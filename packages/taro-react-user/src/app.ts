@@ -1,5 +1,6 @@
 import { Component, PropsWithChildren } from 'react'
-import {safeArea} from "@/utils";
+import {safeArea, handleHost} from "@/utils";
+
 
 import './app.scss'
 
@@ -7,6 +8,7 @@ class App extends Component<PropsWithChildren, any> {
 
   componentDidMount() {
     safeArea();
+    handleHost();
   }
 
   componentDidShow () {}

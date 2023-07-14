@@ -8,12 +8,76 @@ const onScroll = () => {
 const sideBarJsx: React.FC = () => {
   const {View, ScrollView} = useComponent();
   return (
-    <View className={'side-bar'}>
-      <ScrollView
-        onScroll={onScroll}
-      >
-        <View className={'side-bar-item'}>123</View>
-      </ScrollView>
+    <View className={'side-bar-wrap'}>
+      <View className={'side-bar'}>
+        <ScrollView
+          onScroll={onScroll}
+        >
+          <View className={'side-bar-item highlight'}>
+            <View className={'text'}>时尚男装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+          <View className={'side-bar-item'}>
+            <View className={'text'}>流行女装</View>
+          </View>
+        </ScrollView>
+      </View>
     </View>
   )
 }

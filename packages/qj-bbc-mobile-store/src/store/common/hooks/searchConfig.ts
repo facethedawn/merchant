@@ -1,11 +1,11 @@
 export const config = [
   [
     {
-      id: 1,
+      param: 'goodsName',
       label: '商品名称'
     },
     {
-      id: 2,
+      param: 'goodsNo',
       label: '商品编号'
     }
   ],

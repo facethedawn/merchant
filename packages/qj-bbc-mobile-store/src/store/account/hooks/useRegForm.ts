@@ -8,10 +8,7 @@ export const useRegForm = ({lockForm}: any) => {
   const [form] = Form.useForm();
 
   const onFinish = async (formVal:any) => {
-
     const {code, userPhone, userPwsswd, userPwsswdAgin} = formVal;
-
-
 
     if(lockForm === 'true')  {
       taroMessage('协议未勾选', 'error');
@@ -35,8 +32,6 @@ export const useRegForm = ({lockForm}: any) => {
     }catch (err) {
       console.log(err)
     }
-
-    console.log(4, formVal);
   }
 
   return {

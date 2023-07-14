@@ -1,6 +1,6 @@
 import {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {useApplyForm} from 'qj-bbc-mobile-store';
+import {useApplyForm} from '../../../../../../../qj-bbc-mobile-store';
 
 const pickClassifyJsx = () => {
   const {View, Popup, CheckboxGroup, Checkbox} = useComponent();

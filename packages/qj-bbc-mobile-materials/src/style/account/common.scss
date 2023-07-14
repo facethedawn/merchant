@@ -73,7 +73,7 @@
 
   .agreement {
     display: inline-block;
-    color: $default-blue;
+    color: $default-color;
   }
 
   .wx-checkbox-input {
@@ -83,7 +83,7 @@
   }
 
   .wx-checkbox-input.wx-checkbox-input-checked {
-    background-color: $default-blue;
+    background-color: $default-color;
   }
 
   .wx-checkbox-input.wx-checkbox-input-checked::before {
@@ -96,6 +96,6 @@
   padding: 0 36px;
   display: flex;
   justify-content: space-between;
-  color: $default-blue;
+  color: $default-color;
   font-size: 14px;
 }

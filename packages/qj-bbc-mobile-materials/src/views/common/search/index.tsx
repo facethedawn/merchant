@@ -3,33 +3,57 @@ import {useComponent} from '@brushes/simulate-component';
 import {useCommonSearch} from 'qj-bbc-mobile-store';
 
 const searchJsx: React.FC = () => {
-  const {View, Input, Picker} = useComponent();
+  const {View, Input, Picker, Image} = useComponent();
 
-  const { changeIndex, config, params} = useCommonSearch()
-
+  const { sysBtnObj, changeIndex, config, params, handleSearch} = useCommonSearch()
 
   return (
-    <View className={'search-common-wrap'}>
-      <View className={'search-common'}>
-        <View className={'search-content'}>
-          <View className={'search-filter'}>
-            <Picker
-              mode='multiSelector'
-              range={config}
-              rangeKey='label'
-              onChange={changeIndex}
-            >
-              {
-                params.label
-              }
-            </Picker>
+    <View
+      className={'search-common-wrap'}
+    >
+      <View
+        style={{
+          width: `${sysBtnObj.left}PX`,
+          padding: `${sysBtnObj.top}PX calc(100% - ${sysBtnObj.right}PX) 0`,
+          boxSizing: 'border-box'
+        }}
+      >
+        <View
+          className={'search-common'}
+          style={{
+            height: `${sysBtnObj.height}PX`
+          }}
+        >
+          <View className={'search-content'}>
+            <View className={'search-filter'}>
+              <Picker
+                mode='multiSelector'
+                range={config}
+                rangeKey='label'
+                onChange={changeIndex}
+              >
+                <View className={'typeWrap'}>
+                  <View className={'type'}>{params.label}</View>
+                  <Image
+                    src='https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/arrow-down.png'
+                    mode='widthFix'
+                    className='icon'
+                  />
+                </View>
+              </Picker>
+            </View>
+            <Input
+              placeholder={'请输入关键词搜索'}
+              className={'fillIn'}
+            />
           </View>
-          <Input
-            placeholder={'请输入关键词搜索'}
-          />
-        </View>
-        <View className={'btn'}>
-          搜索
+          <View className={'btn'} onClick={handleSearch}>
+            <Image
+              src='https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/search.png'
+              mode='widthFix'
+              className='icon'
+            />
+          </View>
         </View>
       </View>
     </View>
