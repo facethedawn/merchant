@@ -1,0 +1,20 @@
+.fill-in-express {
+  padding: 16px;
+  box-sizing: border-box;
+
+  .adm-form-item-required-asterisk {
+    color: #ff0934 !important;
+  }
+
+  .adm-form-item-feedback-error {
+    color: #ff0934;
+  }
+
+  .adm-form .adm-form-footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .btn {
+    justify-content: center;
+  }
+}

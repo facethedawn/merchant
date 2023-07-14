@@ -1,5 +1,6 @@
 export default defineAppConfig({
   pages: [
+    'pages/fill-in-express/index',
     'pages/order-list/index',
     'pages/goods-list/index',
     'pages/order-detail/index',
