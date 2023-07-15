@@ -2,12 +2,15 @@
 
 .order-list {
   background-color: $bg-color;
+  height: 100%;
 
   .tab {
     padding: 0 16px;
     background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
+    height: 44PX;
+    line-height: 44PX;
 
     .tab-item {
       font-size: 12px;
@@ -25,5 +28,6 @@
 
   .order-content {
     padding: 16px;
+    box-sizing: border-box;
   }
 }

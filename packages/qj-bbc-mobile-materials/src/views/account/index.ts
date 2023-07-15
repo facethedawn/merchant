@@ -5,3 +5,4 @@ export * from './apply-settle';
 export * from './review-progress';
 export * from './agreement';
 export * from './mobile-login';
+export * from './change-pwd';

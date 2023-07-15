@@ -1,11 +1,15 @@
 export default defineAppConfig({
   pages: [
-    'pages/fill-in-express/index',
+    'pages/mine/index',
+    'account/change-pwd/index',
+    'pages/brokerage-list/index',
+    'pages/person-info/index',
+    'pages/live-list/index',
     'pages/order-list/index',
+    'pages/fill-in-express/index',
     'pages/goods-list/index',
     'pages/order-detail/index',
     'pages/return-order/index',
-    'pages/mine/index',
     'pages/index/index',
     'pages/detail/index',
     'pages/subpage/index',

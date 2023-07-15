@@ -1,4 +1,8 @@
 export const routerMap = {
+  brokerageList:'/pages/brokerage-list/index',
+  liveList: '/pages/live-list/index',
+  personInfo: '/pages/person-info/index',
+  changePwd: '/account/change-pwd/index',
   auth: '/account/auth/index',
   apply: '/account/apply/index',
   reg: '/account/register/index',

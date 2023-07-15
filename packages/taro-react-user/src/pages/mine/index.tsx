@@ -1,14 +1,12 @@
-import { useLoad } from '@tarojs/taro'
+import {Mine} from 'qj-bbc-mobile-materials';
+import {PageWrap} from "@/components";
 
 export default function Index() {
 
-  useLoad(() => {
-    console.log('Page loaded.')
-  })
 
   return (
-    <>
-      我的
-    </>
+    <PageWrap>
+      <Mine />
+    </PageWrap>
   )
 }
