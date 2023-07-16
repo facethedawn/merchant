@@ -1,12 +1,12 @@
 import {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
 
-const brokerageListJsx = () => {
+const classifyRulesJsx: React.FC = () => {
   const {View} = useComponent();
 
   return (
-    <View>佣金查看</View>
+    <View>分类规则</View>
   )
 }
 
-export const BrokerageList = memo(brokerageListJsx);
+export const ClassifyRules = memo(classifyRulesJsx);

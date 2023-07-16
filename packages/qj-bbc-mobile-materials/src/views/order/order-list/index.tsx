@@ -1,8 +1,8 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 import {config} from './config';
-import {OrderItem, Search} from "../common";
-import {useCommonSearch} from "../../../../qj-bbc-mobile-store";
+import {CommonTab, OrderItem, Search} from "../../common";
+import {useCommonSearch} from "../../../../../qj-bbc-mobile-store";
 
 
 const orderListJsx: React.FC = () => {
@@ -12,15 +12,7 @@ const orderListJsx: React.FC = () => {
   return (
     <View className={'order-list'}>
       <Search/>
-      <View className={'tab'}>
-        {
-          config.map((item, index) => {
-            return (
-              <View className={'tab-item active'} key={index}>{item.label}</View>
-            )
-          })
-        }
-      </View>
+        <CommonTab config={config} />
         <View
           className={'order-content'}
           style={{

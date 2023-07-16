@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 
 import {useComponent} from '@brushes/simulate-component';
-import {GoodsItemLite} from "../../common";
+import {GoodsItemLite} from "../../../common";
 
 const goodsInfoJsx: React.FC = () => {
   const {View} = useComponent();

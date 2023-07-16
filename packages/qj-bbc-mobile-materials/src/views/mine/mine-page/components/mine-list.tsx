@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {useMine} from 'qj-bbc-mobile-store';
+import {useMine} from '../../../../../../qj-bbc-mobile-store';
 
 const mineListJsx: React.FC = () => {
   const {View, Image} = useComponent();

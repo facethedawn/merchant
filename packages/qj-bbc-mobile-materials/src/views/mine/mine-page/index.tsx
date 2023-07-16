@@ -2,7 +2,7 @@ import {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 import {MineDashboard} from "./components";
 
-const mineJsx = () => {
+const minePageJsx = () => {
   const {View} = useComponent();
 
   return (
@@ -13,4 +13,4 @@ const mineJsx = () => {
   )
 }
 
-export const Mine = memo(mineJsx);
+export const MinePage = memo(minePageJsx);
