@@ -10,8 +10,16 @@ const MERCHANT = {
   SAVE_UM_USER_PHONE_NO_CODE_BY_WX: '/web/ml/muser/saveUmuserPhoneNoCodeByWX.json', // 手机号直接登录
   QUERY_CLASSTREE_PAGE: '/web/rs/classtree/queryClasstreePage.json', // 申请入驻获取商品类目
   QUERY_RESOURCE_GOODS_PAGE_PLAT_FOR_MERCHANT_ENTER: '/web/rs/resourceGoods/queryResourceGoodsPagePaltForMerchantEnter.json', // 搜索商品
+  QUERY_PM_SKU_PAGE: '/web/rs/sku/queryPmSkuPage.json', // 新增活动的商品商品列表， 当商品列表来用
+  QUERY_CLASS_TREE_YZF: '/web/rs/classtree/queryClasstreeYzf.json', // 获取分类
+  UPDATE_Audit_OR_CANNEL_FOR_PASS: '/web/rs/sku/updateAuditOrCannelForPass.json' // 上下架
 }
 
+export const updateAuditOrCannelForPass = (params = {}) => get(MERCHANT.UPDATE_Audit_OR_CANNEL_FOR_PASS, params);
+
+export const  queryClasstreeYzf = (params = {}) => get(MERCHANT.QUERY_CLASS_TREE_YZF, params);
+
+export const queryPmSkuPage = (params = {}) => post(MERCHANT.QUERY_PM_SKU_PAGE, params);
 
 export const warrantyMerchantLogin = (params = {}) => post(MERCHANT.WARRANTY_MERCHANT_LOGIN, params);
 

@@ -3,9 +3,9 @@ import {useComponent} from '@brushes/simulate-component';
 import {useCommonSearch} from 'qj-bbc-mobile-store';
 
 const searchJsx: React.FC = () => {
-  const {View, Input, Picker, Image} = useComponent();
+  const {View, Input, Image} = useComponent();
 
-  const { sysBtnObj, changeIndex, config, params, handleSearch} = useCommonSearch()
+  const { sysBtnObj,  handleSearch} = useCommonSearch()
 
   return (
     <View
@@ -26,21 +26,21 @@ const searchJsx: React.FC = () => {
         >
           <View className={'search-content'}>
             <View className={'search-filter'}>
-              <Picker
-                mode='multiSelector'
-                range={config}
-                rangeKey='label'
-                onChange={changeIndex}
-              >
-                <View className={'typeWrap'}>
-                  <View className={'type'}>{params.label}</View>
-                  <Image
-                    src='https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/arrow-down.png'
-                    mode='widthFix'
-                    className='icon'
-                  />
-                </View>
-              </Picker>
+              {/*<Picker*/}
+              {/*  mode='multiSelector'*/}
+              {/*  range={config}*/}
+              {/*  rangeKey='label'*/}
+              {/*  onChange={changeIndex}*/}
+              {/*>*/}
+              {/*  <View className={'typeWrap'}>*/}
+              {/*    <View className={'type'}>{params.label}</View>*/}
+              {/*    <Image*/}
+              {/*      src='https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/arrow-down.png'*/}
+              {/*      mode='widthFix'*/}
+              {/*      className='icon'*/}
+              {/*    />*/}
+              {/*  </View>*/}
+              {/*</Picker>*/}
             </View>
             <Input
               placeholder={'请输入关键词搜索'}

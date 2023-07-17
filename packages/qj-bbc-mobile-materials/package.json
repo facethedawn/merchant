@@ -11,6 +11,8 @@
   "dependencies": {
     "@brushes/simulate-component": "^0.1.35",
     "dayjs": "^1.11.9",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "qj-bbc-api": "*",
+    "qj-bbc-mobile-store": "*"
   }
 }

@@ -3,9 +3,9 @@ import {config} from './searchConfig';
 import {getTaro} from "@brushes/utils";
 import {queryResourceGoodsPagePaltForMerchantEnter} from 'qj-bbc-api';
 
-const Taro = getTaro();
 
 export const useCommonSearch = () => {
+  const Taro = getTaro();
   const [sysBtnObj, setSysBtnObj] = useState({
     bottom: 0,
     height: 0,

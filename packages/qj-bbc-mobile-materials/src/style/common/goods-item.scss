@@ -6,8 +6,9 @@
   .goods-info-wrap {
     display: flex;
     margin-bottom: 10px;
+    align-items: center;
 
-    .lPart {
+    .l-part {
       padding-right: 8px;
 
       .img {
@@ -16,7 +17,8 @@
       }
     }
 
-    .rPart {
+    .r-part {
+      text-align: left;
       .title {
         font-size: 14px;
         color: $font-color;
