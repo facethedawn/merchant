@@ -20,6 +20,7 @@
     "build:qq": "taro build --type qq",
     "build:jd": "taro build --type jd",
     "build:quickapp": "taro build --type quickapp",
+    "start": "npm run build:weapp -- --watch",
     "dev:weapp": "npm run build:weapp -- --watch",
     "dev:swan": "npm run build:swan -- --watch",
     "dev:alipay": "npm run build:alipay -- --watch",
@@ -54,7 +55,6 @@
     "@tarojs/runtime": "3.6.2",
     "@tarojs/shared": "3.6.2",
     "@tarojs/taro": "3.6.2",
-    "qj-bbc-mobile-materials": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

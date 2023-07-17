@@ -5,7 +5,7 @@ import {queryPmSkuPage, queryClasstreeYzf, updateAuditOrCannelForPass} from 'qj-
 import {useImmutableCallback} from '@brushes/utils';
 import {isEmpty} from 'lodash-es';
 import {extractLastChildList} from '../../utils';
-import {taroMessage} from "@brushes/utils";
+import {taroMessage, getTaro} from "@brushes/utils";
 
 
 interface useGoodsListType {
@@ -55,6 +55,7 @@ export const useGoodsList = ({param = '', refreshNum = 0}: useGoodsListType) => 
 
   const getClassify = async () => {
     try {
+      console.log(58, getTaro())
       const result = await queryClasstreeYzf();
 
       const arr = extractLastChildList(result);

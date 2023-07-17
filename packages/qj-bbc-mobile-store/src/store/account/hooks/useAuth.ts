@@ -7,10 +7,9 @@ import {jumpLink} from "../../../utils";
 // import {stackLength} from './useAccountForm';
 import {useEffect} from "react";
 
-const Taro = getTaro();
 
 export const useAuth = () => {
-
+  const Taro = getTaro();
   useEffect(() => {
     Taro.checkSession({
       success: () => {

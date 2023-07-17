@@ -1,15 +1,14 @@
 // @ts-nocheck
-
+import { errorCallback } from '@brushes/request'
 import {Form} from 'antd-mobile';
 import {warrantyMerchantLogin} from 'qj-bbc-api';
 import {getTaro} from '@brushes/utils';
 import {routerMap} from '../../../router-map';
-import {jumpLink, jumpTabBar} from "../../../utils";
-
-const Taro = getTaro();
+import {jumpLink} from "../../../utils";
+import {stackLength} from './useAccountForm';
 
 export const useLogin = () => {
-
+  const Taro = getTaro();
   const [form] = Form.useForm();
 
   const onFinish = (formVal: any) => {
@@ -25,8 +24,13 @@ export const useLogin = () => {
           const userInfo = JSON.parse(result.dataObj.userInfo);
 
           Taro.setStorageSync('saas-token', userInfo.ticketTokenid);
-          console.log(11, userInfo);
-          jumpTabBar(routerMap.goodList)
+          Taro.navigateBack({
+            delta: stackLength(),
+            success: (res) => {
+              console.log('调用前', res);
+              errorCallback();
+            }
+          })
         } catch (err) {
           console.log(err)
         }

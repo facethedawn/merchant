@@ -1,18 +1,18 @@
-import {post, get} from '@brushes/optimize';
+import {post, get} from '@brushes/request';
 
 const MERCHANT = {
   WARRANTY_LOGIN: 'web/ml/mlogin/warrantyLogin.json', //授权登录
-  SEND_PHONE: '/web/ml/muser/sendPhone.json', // 发送手机验证码
-  GET_PHONE_FOR_PLA_REG_SC: '/web/ml/muser/getPhoneForPlaRegSc.json', // 检测手机
-  SAVE_USER_MERCHANT_BY_QUALITY: '/web/um/userMerchant/saveUserMerchantByQuality.json', // 注册
-  WARRANTY_MERCHANT_LOGIN: '/web/ml/mlogin/warrantyMerchantLogin.json', // 登录
-  QUERY_MERCHANT_BRAND_PAGE: '/web/rs/brand/queryMerchantBrandPage.json', // 申请入驻获取商品品牌
-  SAVE_UM_USER_PHONE_NO_CODE_BY_WX: '/web/ml/muser/saveUmuserPhoneNoCodeByWX.json', // 手机号直接登录
-  QUERY_CLASSTREE_PAGE: '/web/rs/classtree/queryClasstreePage.json', // 申请入驻获取商品类目
-  QUERY_RESOURCE_GOODS_PAGE_PLAT_FOR_MERCHANT_ENTER: '/web/rs/resourceGoods/queryResourceGoodsPagePaltForMerchantEnter.json', // 搜索商品
-  QUERY_PM_SKU_PAGE: '/web/rs/sku/queryPmSkuPage.json', // 新增活动的商品商品列表， 当商品列表来用
-  QUERY_CLASS_TREE_YZF: '/web/rs/classtree/queryClasstreeYzf.json', // 获取分类
-  UPDATE_Audit_OR_CANNEL_FOR_PASS: '/web/rs/sku/updateAuditOrCannelForPass.json' // 上下架
+  SEND_PHONE: 'web/ml/muser/sendPhone.json', // 发送手机验证码
+  GET_PHONE_FOR_PLA_REG_SC: 'web/ml/muser/getPhoneForPlaRegSc.json', // 检测手机
+  SAVE_USER_MERCHANT_BY_QUALITY: 'web/um/userMerchant/saveUserMerchantByQuality.json', // 注册
+  WARRANTY_MERCHANT_LOGIN: 'web/ml/mlogin/warrantyMerchantLogin.json', // 登录
+  QUERY_MERCHANT_BRAND_PAGE: 'web/rs/brand/queryMerchantBrandPage.json', // 申请入驻获取商品品牌
+  SAVE_UM_USER_PHONE_NO_CODE_BY_WX: 'web/ml/muser/saveUmuserPhoneNoCodeByWX.json', // 手机号直接登录
+  QUERY_CLASSTREE_PAGE: 'web/rs/classtree/queryClasstreePage.json', // 申请入驻获取商品类目
+  QUERY_RESOURCE_GOODS_PAGE_PLAT_FOR_MERCHANT_ENTER: 'web/rs/resourceGoods/queryResourceGoodsPagePaltForMerchantEnter.json', // 搜索商品
+  QUERY_PM_SKU_PAGE: 'web/rs/sku/queryPmSkuPage.json', // 新增活动的商品商品列表， 当商品列表来用
+  QUERY_CLASS_TREE_YZF: 'web/rs/classtree/queryClasstreeYzf.json', // 获取分类
+  UPDATE_Audit_OR_CANNEL_FOR_PASS: 'web/rs/sku/updateAuditOrCannelForPass.json' // 上下架
 }
 
 export const updateAuditOrCannelForPass = (params = {}) => get(MERCHANT.UPDATE_Audit_OR_CANNEL_FOR_PASS, params);

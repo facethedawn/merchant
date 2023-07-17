@@ -1,13 +1,13 @@
 import { getTaro } from '@brushes/utils';
-const Taro = getTaro();
-
 export const jumpLink = (url: string) => {
+  const Taro = getTaro();
   Taro.navigateTo({
     url,
   })
 }
 
 export const jumpTabBar = (url: string) => {
+  const Taro = getTaro();
   Taro.switchTab({
     url
   })

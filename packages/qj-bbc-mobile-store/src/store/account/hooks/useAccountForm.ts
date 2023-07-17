@@ -3,9 +3,9 @@ import {getTaro} from '@brushes/utils';
 import {useEffect, useState} from "react";
 
 
-const Taro = getTaro();
 
 export const stackLength = () => {
+  const Taro = getTaro();
   const arr = Taro.getCurrentPages();
   const obj = {
     pageIndex: 0
