@@ -1,26 +1,30 @@
 export const config = [
   {
     label: '全部',
-    value: 'a',
+    value: '0',
   },
   {
     label: '待付款',
-    value: 'a',
+    value: '1',
   },
   {
     label: '待发货',
-    value: 'a',
+    value: '2',
   },
   {
     label: '已发货',
-    value: 'a',
+    value: '3',
+  },
+  {
+    label: '已收货',
+    value: '4',
   },
   {
     label: '交易成功',
-    value: 'a',
+    value: '5',
   },
   {
     label: '已取消',
-    value: 'a',
+    value: '-1',
   },
 ]

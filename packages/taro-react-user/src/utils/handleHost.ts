@@ -1,6 +1,6 @@
 import {getBaseUrl} from '@brushes/utils';
 import Taro from "@tarojs/taro";
-import {setHost} from 'qj-bbc-mobile-materials';
+import {setHost} from 'qj-bbc-mobile-store';
 import {location} from "@tarojs/runtime";
 
 export const handleHost = () => {

@@ -44,8 +44,8 @@ export default defineAppConfig({
       {
         pagePath: "pages/mine/index",
         text: "",
-        iconPath: "img/tab-icon3-1.png",
-        selectedIconPath: "img/tab-icon3-2.png"
+        iconPath: "img/tab-icon4-1.png",
+        selectedIconPath: "img/tab-icon4-2.png"
       }
     ]
   },

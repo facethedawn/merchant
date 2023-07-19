@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
-import {getHost} from "../../../utils";
+import {getHost} from "qj-bbc-mobile-store";
 
 
 

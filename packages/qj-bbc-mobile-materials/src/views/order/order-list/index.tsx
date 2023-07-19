@@ -1,17 +1,22 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 import {config} from './config';
-import {CommonTab, OrderItem, Search} from "../../common";
-import {useCommonSearch} from "../../../../../qj-bbc-mobile-store";
+import {CommonTab, OrderItem} from "../../common";
+import {useCommonSearch, useOrder} from "qj-bbc-mobile-store";
+import {ScrollView} from '@tarojs/components';
 
 
 const orderListJsx: React.FC = () => {
-  const {View, ScrollView} = useComponent();
+  const {View} = useComponent();
   const {sysBtnObj} = useCommonSearch()
+
+  const {list, goFillIn} = useOrder();
+
+  console.log(14, list);
 
   return (
     <View className={'order-list'}>
-      <Search/>
+      {/*<Search/>*/}
         <CommonTab config={config} />
         <View
           className={'order-content'}
@@ -21,13 +26,17 @@ const orderListJsx: React.FC = () => {
         >
           <ScrollView
             scrollY
+            style={{height: '100%'}}
           >
-          <OrderItem/>
-            <OrderItem/>
-            <OrderItem/>
-            <OrderItem/>
-            <OrderItem/>
-            <OrderItem/>
+          {/*<OrderItem/>*/}
+            {/*<OrderItem/>*/}
+            {/*<OrderItem/>*/}
+            {/*<OrderItem/>*/}
+            {/*<OrderItem/>*/}
+            {/*<OrderItem/>*/}
+            {
+              list.map((item: any, index: number) => <OrderItem item={item} goFillIn={goFillIn} key={index}/>)
+            }
           </ScrollView>
         </View>
     </View>

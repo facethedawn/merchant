@@ -15,7 +15,6 @@ class App extends Component<PropsWithChildren, any> {
       fly.engine= XMLHttpRequest
     } else {
       wxEngine();
-      console.log(19, fly.engine)
     }
     fly.interceptors.request.use((config) => {
       //给所有请求添加自定义header

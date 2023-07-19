@@ -1,9 +1,9 @@
 import React, {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
-import {getHost} from "../../../../utils";
+import {getHost} from "qj-bbc-mobile-store";
 
 
-const goodsPopupContentJsx:React.FC<any> = ({popupShow, setPopupShow, chooseItem}) => {
+const goodsPopupContentJsx:React.FC<any> = ({popupShow, setPopupShow, chooseItem, inventory, setInventoryMin, setInventoryMax, changeGoodsInfoSubmit, changeInventory}) => {
 
   const {View, Popup, Image, Input} = useComponent();
   const {goodsName, dataPic, goodsShowno, goodsNum, pricesetNprice, skuName} = chooseItem
@@ -36,9 +36,9 @@ const goodsPopupContentJsx:React.FC<any> = ({popupShow, setPopupShow, chooseItem
         <View className={'goods-list-popup-list-item'}>
           <View className={'l-part'}>库存：</View>
           <View className={'inventory-item'}>
-            <View className={'btn'}>归零</View>
-            <View className={'inventory'}><Input className={'fill-in'} type={'number'} value={goodsNum} /></View>
-            <View className={'btn'}>9999</View>
+            <View className={'btn'} onClick={setInventoryMin}>归零</View>
+            <View className={'inventory'}><Input className={'fill-in'} type={'number'} value={inventory} onChange={changeInventory} /></View>
+            <View className={'btn'} onClick={setInventoryMax}>9999</View>
           </View>
         </View>
 
@@ -50,7 +50,7 @@ const goodsPopupContentJsx:React.FC<any> = ({popupShow, setPopupShow, chooseItem
           </View>
         </View>
 
-        <View className={'default-btn'}>确定</View>
+        <View className={'default-btn'} onClick={changeGoodsInfoSubmit.bind(null, chooseItem)}>确定</View>
       </View>
     </Popup>
   )

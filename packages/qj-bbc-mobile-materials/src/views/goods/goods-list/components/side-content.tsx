@@ -3,6 +3,7 @@ import {useComponent} from "@brushes/simulate-component";
 import {GoodsItem} from "../../../common";
 import {GoodsPopupContent} from "./goods-popup-content";
 import {GoodsPopupFilter} from "./goods-popup-filter";
+import {ScrollView} from '@tarojs/components';
 
 
 const sideContentJsx: React.FC<any> = (
@@ -21,10 +22,16 @@ const sideContentJsx: React.FC<any> = (
     setUpDownState,
     resetState,
     filterSubmit,
-    onScroll
+    onScroll,
+    inventory,
+    setInventoryMin,
+    setInventoryMax,
+    changeGoodsInfoSubmit,
+    changeInventory,
+    loading
   }) => {
 
-  const {View, ScrollView, Image} = useComponent();
+  const {View, Image, WrapLoading} = useComponent();
   return (
     <View className={'side-content'}>
       <View className={'dashboard'}>
@@ -40,18 +47,38 @@ const sideContentJsx: React.FC<any> = (
       </View>
       <View className={'goods-wrap'}>
         <ScrollView
-          onScroll={onScroll}
+          scrollY
+          style={{height: '100%'}}
+          onScrollToLower={onScroll}
         >
           <View className={'goods-item-wrap'}>
-            {
-              list.map((item: any, index: number) => {
-                return <GoodsItem key={index} item={item} setPopupShow={setPopupShow} setChooseItem={setChooseItem} handlePopupBtn={handlePopupBtn} handleUpDown={handleUpDown} />
-              })
-            }
+            <WrapLoading loading={loading}>
+              {
+                list.map((item: any, index: number) => {
+                  return <GoodsItem
+                    key={index}
+                    item={item}
+                    setPopupShow={setPopupShow}
+                    setChooseItem={setChooseItem}
+                    handlePopupBtn={handlePopupBtn}
+                    handleUpDown={handleUpDown}
+                  />
+                })
+              }
+            </WrapLoading>
           </View>
         </ScrollView>
       </View>
-      <GoodsPopupContent popupShow={popupShow} setPopupShow={setPopupShow} chooseItem={chooseItem} />
+      <GoodsPopupContent
+        popupShow={popupShow}
+        setPopupShow={setPopupShow}
+        chooseItem={chooseItem}
+        inventory={inventory}
+        setInventoryMin={setInventoryMin}
+        setInventoryMax={setInventoryMax}
+        changeGoodsInfoSubmit={changeGoodsInfoSubmit}
+        changeInventory={changeInventory}
+      />
       <GoodsPopupFilter
         filterPopupShow={filterPopupShow}
         setFilterPopupShow={setFilterPopupShow}

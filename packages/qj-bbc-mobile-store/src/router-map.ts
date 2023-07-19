@@ -1,4 +1,5 @@
 export const routerMap = {
+  goodsSearch: '/pages/goods-search/index',
   brokerageList:'/pages/brokerage-list/index',
   liveList: '/pages/live-list/index',
   personInfo: '/pages/person-info/index',
@@ -10,6 +11,7 @@ export const routerMap = {
   accountLogin: '/account/accountLogin/index',
   agreement: '/account/agreement/index',
   goodList: '/pages/goods-list/index',
+  fillInExpress: '/pages/fill-in-express/index'
   // 'pages/index/index',
   // 'pages/mine/index',
   // 'pages/detail/index',

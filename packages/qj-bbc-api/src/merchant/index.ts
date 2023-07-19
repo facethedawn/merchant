@@ -12,8 +12,20 @@ const MERCHANT = {
   QUERY_RESOURCE_GOODS_PAGE_PLAT_FOR_MERCHANT_ENTER: 'web/rs/resourceGoods/queryResourceGoodsPagePaltForMerchantEnter.json', // 搜索商品
   QUERY_PM_SKU_PAGE: 'web/rs/sku/queryPmSkuPage.json', // 新增活动的商品商品列表， 当商品列表来用
   QUERY_CLASS_TREE_YZF: 'web/rs/classtree/queryClasstreeYzf.json', // 获取分类
-  UPDATE_Audit_OR_CANNEL_FOR_PASS: 'web/rs/sku/updateAuditOrCannelForPass.json' // 上下架
+  UPDATE_Audit_OR_CANNEL_FOR_PASS: 'web/rs/sku/updateAuditOrCannelForPass.json', // 上下架
+  UPDATE_SKU_EDIT_PASS: '/web/rs/resourceGoods/updateSkuEditPass.json', // 调整库存
+  QUERY_CONTRACT_PAGE_MEMBER_C_CODE:'/web/oc/contract/queryContractPageMemberCcode.json',
+  QUERY_EXPRESS_PAGE_FOR_PROP: '/web/wl/express/queryExpressPageForProp.json', // 获取所有物流公司
+  SEND_CONTRACT_NEXT_BY_SG: '/web/oc/contractEngine/sendContractNextBySg.json', // 物流信息提交
 }
+
+export const sendContractNextBySg = (params = {}) => post(MERCHANT.SEND_CONTRACT_NEXT_BY_SG, params);
+
+export const queryExpressPageForProp = (params = {}) => post(MERCHANT.QUERY_EXPRESS_PAGE_FOR_PROP, params);
+
+export const queryContractPageMemberCcode = (params = {}) => post(MERCHANT.QUERY_CONTRACT_PAGE_MEMBER_C_CODE, params);
+
+export const updateSkuEditPass = (params = {}) => post(MERCHANT.UPDATE_SKU_EDIT_PASS, params);
 
 export const updateAuditOrCannelForPass = (params = {}) => get(MERCHANT.UPDATE_Audit_OR_CANNEL_FOR_PASS, params);
 

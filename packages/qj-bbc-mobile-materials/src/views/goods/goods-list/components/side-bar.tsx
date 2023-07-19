@@ -1,18 +1,16 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-
-const onScroll = () => {
-  console.log('end')
-}
+import {ScrollView} from '@tarojs/components';
 
 const sideBarJsx: React.FC<any> = ({classifyArr, chosenClassifyIndex, setChosenClassifyIndex}) => {
-  const {View, ScrollView} = useComponent();
+  const {View} = useComponent();
 
   return (
     <View className={'side-bar-wrap'}>
       <View className={'side-bar'}>
         <ScrollView
-          onScroll={onScroll}
+          scrollY
+          style={{height: '100%'}}
         >
           {
             classifyArr.map((item: any, index: number) => {

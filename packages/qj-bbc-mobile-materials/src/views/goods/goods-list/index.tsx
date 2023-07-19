@@ -1,11 +1,11 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {Search} from "../../common";
-import {SideBar, SideContent} from "./components";
+import {Search, SearchTopWrap} from "../../common";
+import {SideBar, SideContent, config} from "./components";
 import {useCommonSearch, useGoodsList} from 'qj-bbc-mobile-store';
 
 const goodsListJsx: React.FC = () => {
-  const {View, WrapLoading} = useComponent();
+  const {View} = useComponent();
   const {sysBtnObj} = useCommonSearch()
   const {
     onScroll,
@@ -26,12 +26,23 @@ const goodsListJsx: React.FC = () => {
     upDownState,
     setUpDownState,
     resetState,
-    filterSubmit
-  } = useGoodsList({param: '', refreshNum:1 });
+    filterSubmit,
+    setInventoryMin,
+    inventory,
+    setInventoryMax,
+    changeGoodsInfoSubmit,
+    changeInventory,
+    changeSearchType,
+    chooseSearchTypeIndex,
+    goGoodsSearch,
+    handleChangeSearchContent
+  } = useGoodsList({param: '', refreshNum:1, config });
 
   return (
     <View className={'goods-list'}>
-      <Search/>
+      <SearchTopWrap>
+        <Search config={config} changeSearchType={changeSearchType} value={chooseSearchTypeIndex} onFinish={goGoodsSearch} onChange={handleChangeSearchContent} />
+      </SearchTopWrap>
       <View
         className={'goods-list-content'}
         style={{
@@ -43,7 +54,6 @@ const goodsListJsx: React.FC = () => {
           chosenClassifyIndex={chosenClassifyIndex}
           setChosenClassifyIndex={setChosenClassifyIndex}
         />
-        <WrapLoading loading={loading}>
           <SideContent
             list={list}
             all={all}
@@ -61,8 +71,12 @@ const goodsListJsx: React.FC = () => {
             resetState={resetState}
             filterSubmit={filterSubmit}
             onScroll={onScroll}
+            inventory={inventory}
+            setInventoryMin={setInventoryMin}
+            setInventoryMax={setInventoryMax}
+            changeGoodsInfoSubmit={changeGoodsInfoSubmit}
+            changeInventory={changeInventory}
           />
-        </WrapLoading>
       </View>
     </View>
   )

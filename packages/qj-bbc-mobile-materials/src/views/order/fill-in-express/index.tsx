@@ -1,37 +1,34 @@
 import React, {memo} from "react";
 import {useComponent, antdMobile} from '@brushes/simulate-component';
+import {Picker} from '@tarojs/components';
+import {useFillInExpress} from "qj-bbc-mobile-store";
 
-const fillInExpressJsx: React.FC= () => {
 
-  const {View, Picker} = useComponent();
-  const {Form, Input} = antdMobile;
+const fillInExpressJsx: React.FC<any> = ({params}) => {
+  const {form, expressList, expressIndex, changeExpressIndex, onFinish} = useFillInExpress({params});
+
+  const {View} = useComponent();
+  const {Form, Input, Button} = antdMobile;
 
   return (
     <View className={'fill-in-express'}>
       <Form
-        // form={form}
+        form={form}
         layout='horizontal'
         footer={
-          <View className={'default-btn btn'}>确定</View>
+          <Button block className={'btn'} type='submit'>确定</Button>
         }
-        // onFinish={onFinish}
+        onFinish={onFinish}
       >
         <Form.Item
-          name={'company'}
           label={'物流公司'}
-          rules={[
-            {
-              required: true,
-              message: `物流公司不能为空`
-            }
-          ]}
         >
-          <Picker>
-            <View>请选择物流公司</View>
+          <Picker range={expressList} rangeKey={'expressName'} onChange={changeExpressIndex}>
+            <View>{expressList[expressIndex] ? expressList[expressIndex]['expressName'] : ''}</View>
           </Picker>
         </Form.Item>
         <Form.Item
-          name={'expressNO'}
+          name={'packageBillno'}
           label={'配送单号'}
           rules={[
             {
@@ -43,7 +40,7 @@ const fillInExpressJsx: React.FC= () => {
           <Input
             clearable
             placeholder={'请输入配送单号'}
-            type='password'
+            type='text'
           />
         </Form.Item>
       </Form>

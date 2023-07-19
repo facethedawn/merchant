@@ -1,20 +1,29 @@
-// @ts-nocheck
-
 import {useEffect, useRef, useState} from "react";
-import {queryPmSkuPage, queryClasstreeYzf, updateAuditOrCannelForPass} from 'qj-bbc-api';
+import {queryPmSkuPage, queryClasstreeYzf, updateAuditOrCannelForPass, updateSkuEditPass} from 'qj-bbc-api';
 import {useImmutableCallback} from '@brushes/utils';
 import {isEmpty} from 'lodash-es';
-import {extractLastChildList} from '../../utils';
-import {taroMessage, getTaro} from "@brushes/utils";
+import {extractLastChildList} from '../../../utils';
+import {taroMessage} from "@brushes/utils";
 
 
 interface useGoodsListType {
   param?: string,
-  refreshNum?: number
+  refreshNum?: number,
+  config: any
+}
+
+interface paramsType {
+  page: number,
+  rows: number,
+  exportFuzzy: boolean,
+  dataOpbillstate?: string,
+  classtreeCode?: string,
+  goodsName?: string,
+  goodsNo?: string
 }
 
 
-export const useGoodsList = ({param = '', refreshNum = 0}: useGoodsListType) => {
+export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListType) => {
   const isScroll = useRef(false);
   const num = useRef(0);
   const all = useRef(0);
@@ -35,18 +44,24 @@ export const useGoodsList = ({param = '', refreshNum = 0}: useGoodsListType) => 
   }]);
   const [chosenClassifyIndex, setChosenClassifyIndex] = useState(0);
 
-  const [filterPopupShow, setFilterPopupShow] = useState(true);
+  const [filterPopupShow, setFilterPopupShow] = useState(false);
 
   const [upDownState, setUpDownState] = useState(null);
 
+  // 调整库存数
+  const [inventory, setInventory] = useState(0);
 
-  //
-  // const [filterCondition, setFilterCondition] = useState([])
+  const lock = useRef(false);
+
+  const [chooseSearchTypeIndex, setChooseSearchTypeIndex] = useState(0);
+
+  const [searchContent, setSearchContent] = useState('');
+
 
 
   useEffect(() => {
     init();
-  }, [refreshNum]);
+  }, [refreshNum, chosenClassifyIndex]);
 
   useEffect(() => {
     getClassify()
@@ -55,14 +70,11 @@ export const useGoodsList = ({param = '', refreshNum = 0}: useGoodsListType) => 
 
   const getClassify = async () => {
     try {
-      console.log(58, getTaro())
       const result = await queryClasstreeYzf();
 
       const arr = extractLastChildList(result);
 
       setClassifyArr((prev: any) => [...prev, ...arr])
-
-      console.log(48, arr);
 
     } catch (err) {
       console.log(err)
@@ -80,17 +92,22 @@ export const useGoodsList = ({param = '', refreshNum = 0}: useGoodsListType) => 
     setLoading(true);
     ++num.current;
     try {
-      const params = {
+      const searchParam = config[0][chooseSearchTypeIndex].param;
+
+      const params: paramsType = {
         page: num.current,
         rows: 10,
         exportFuzzy: true,
+        [searchParam]: searchContent
       }
-
 
       if(upDownState !== null) {
         params.dataOpbillstate = upDownState
       }
 
+      if(chosenClassifyIndex != 0) {
+        params.classtreeCode = classifyArr[chosenClassifyIndex].classtreeCode
+      }
 
       const data = await queryPmSkuPage(params);
 
@@ -117,17 +134,22 @@ export const useGoodsList = ({param = '', refreshNum = 0}: useGoodsListType) => 
     if (state === 0) {
       setChooseItem(item);
       setPopupShow(true);
+      setInventory(item.goodsNum);
     } else if (state === 2) {
       taroMessage('请先下架商品', 'error');
     }
   }
 
   const handleUpDown = async (skuId: string, dataState: number) => {
+    if (lock.current) return;
+    lock.current = true;
     try {
-      const result = await updateAuditOrCannelForPass({skuIds: skuId, flag: dataState === 0 ? 1 : 0});
-      console.log(112, result);
+      await updateAuditOrCannelForPass({skuIds: skuId, flag: dataState === 0 ? 1 : 0});
+      init();
     } catch (err) {
       console.log(err)
+    } finally {
+      lock.current = false;
     }
   }
 
@@ -137,6 +159,51 @@ export const useGoodsList = ({param = '', refreshNum = 0}: useGoodsListType) => 
 
   const filterSubmit = () => {
     setFilterPopupShow(false);
+    init();
+  }
+
+  const changeGoodsInfoSubmit = async (item: any) => {
+    const {skuCode, goodsCode, skuId, dataOpbillstate, skuNo} = item;
+
+    try {
+      await updateSkuEditPass({
+        skuCode,
+        goodsCode,
+        skuId,
+        dataOpbillstate,
+        skuNo,
+        goodsSupplynum: inventory
+      })
+      setPopupShow(false);
+      init()
+    }catch (err) {
+      console.log(err)
+    }
+  }
+
+  const setInventoryMin = () => {
+    setInventory(0);
+  }
+
+  const setInventoryMax = () => {
+    setInventory(9999);
+  }
+
+  const changeInventory = (val: number) => {
+    setInventory(val)
+  }
+
+  const changeSearchType = (e: any) => {
+    const coe = e.detail.value[0];
+    setChooseSearchTypeIndex(coe);
+  }
+
+  const handleChangeSearchContent = (e: any) => {
+    setSearchContent(e);
+  }
+
+  const goGoodsSearch = () => {
+    init();
   }
 
 
@@ -160,6 +227,15 @@ export const useGoodsList = ({param = '', refreshNum = 0}: useGoodsListType) => 
     upDownState,
     setUpDownState,
     resetState,
-    filterSubmit
+    filterSubmit,
+    setInventoryMin,
+    inventory,
+    setInventoryMax,
+    changeGoodsInfoSubmit,
+    changeInventory,
+    changeSearchType,
+    chooseSearchTypeIndex,
+    goGoodsSearch,
+    handleChangeSearchContent
   }
 }

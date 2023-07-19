@@ -1,3 +1,5 @@
+@import '../theme';
+
 .fill-in-express {
   padding: 16px;
   box-sizing: border-box;
@@ -16,5 +18,13 @@
   }
   .btn {
     justify-content: center;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    background-color: $default-color;
+    padding: 0 30px;
+    color: #FFFFFF;
+    border-radius: 34px;
   }
 }
