@@ -9,7 +9,7 @@ export default defineAppConfig({
     'pages/live-list/index',
     'pages/fill-in-express/index',
     'pages/order-detail/index',
-    'pages/return-order/index',
+    'pages/return-order-list/index',
     'pages/index/index',
     'pages/detail/index',
     'pages/subpage/index',
@@ -36,7 +36,7 @@ export default defineAppConfig({
         selectedIconPath: "img/tab-icon2-2.png"
       },
       {
-        pagePath: "pages/return-order/index",
+        pagePath: "pages/return-order-list/index",
         text: "",
         iconPath: "img/tab-icon3-1.png",
         selectedIconPath: "img/tab-icon3-2.png"

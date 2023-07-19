@@ -18,7 +18,10 @@ const MERCHANT = {
   GET_CONTRACT_BY_BILL_CODE: '/web/oc/contract/getContractByBillcode.json', // 订单详情
   QUERY_EXPRESS_PAGE_FOR_PROP: '/web/wl/express/queryExpressPageForProp.json', // 获取所有物流公司
   SEND_CONTRACT_NEXT_BY_SG: '/web/oc/contractEngine/sendContractNextBySg.json', // 物流信息提交
+  QUERY_BY_MEMBER_C_CODE_MERCHANT: '/web/oc/refund/queryByMemberCcodeMerchant.json', //退单列表
 }
+
+export const queryByMemberCcodeMerchant = (params = {}) => post(MERCHANT.QUERY_BY_MEMBER_C_CODE_MERCHANT, params);
 
 export const getContractByBillcode = (params = {}) => post(MERCHANT.GET_CONTRACT_BY_BILL_CODE, params);
 

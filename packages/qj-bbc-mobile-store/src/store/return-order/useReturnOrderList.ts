@@ -1,19 +1,18 @@
-import {queryContractPageMemberCcode} from 'qj-bbc-api';
-import {useImmutableCallback} from "@brushes/utils";
 import {useEffect, useRef, useState} from "react";
+import {useImmutableCallback} from "@brushes/utils";
+import {queryByMemberCcodeMerchant} from "qj-bbc-api";
 import {isEmpty} from "lodash-es";
 import {jumpLink} from "../../utils";
 import {routerMap} from "../../router-map";
 
-
 interface paramType {
-  childFlag: boolean,
   rows: number,
   page: number,
   dataState?: number
 }
 
-export const useOrder = ({config, searchConfig, refreshNum = 0}: any) => {
+
+export const useReturnOrderList = ({config, searchConfig}: any) => {
   const isScroll = useRef(false);
   const num = useRef(0);
   const all = useRef(0);
@@ -25,21 +24,16 @@ export const useOrder = ({config, searchConfig, refreshNum = 0}: any) => {
 
   const searchContent = useRef('');
 
-  console.log(28, refreshNum)
-
-
-
-
   useEffect(() => {
     init();
-  }, [coe, refreshNum]);
+  }, [coe]);
 
   const init = useImmutableCallback(() => {
+    console.log(36, coe)
     isScroll.current = false;
     num.current = 0;
     onScroll();
   });
-
 
 
   const onScroll = useImmutableCallback(async () => {
@@ -50,7 +44,6 @@ export const useOrder = ({config, searchConfig, refreshNum = 0}: any) => {
     try {
       const searchParam = searchConfig[0][searchCoe].param;
       const param: paramType = {
-        childFlag: true,
         rows: 10,
         page: num.current,
         [searchParam]: searchContent.current
@@ -59,8 +52,8 @@ export const useOrder = ({config, searchConfig, refreshNum = 0}: any) => {
       if(coe !== 0) {
         param.dataState = +config[coe]['value']
       }
-
-      const data = await queryContractPageMemberCcode(param);
+      console.log(61, coe)
+      const data = await queryByMemberCcodeMerchant(param);
 
       if (data.total !== all.current) {
         all.current = data.total;

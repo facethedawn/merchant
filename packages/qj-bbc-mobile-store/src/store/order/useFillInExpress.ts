@@ -1,8 +1,9 @@
-
 import {useEffect, useState} from "react";
 import {queryExpressPageForProp, sendContractNextBySg} from "qj-bbc-api";
 import {Form} from 'antd-mobile';
 import { get } from 'lodash-es';
+import {updatePagesRefreshStore, getPagesRefreshStore} from '@brushes/utils';
+import { getTaro } from '@brushes/utils';
 
 export const useFillInExpress = ({params}: any) => {
   const [form] = Form.useForm();
@@ -29,6 +30,7 @@ export const useFillInExpress = ({params}: any) => {
   }
 
   const onFinish = async (formVal: any) => {
+    const Taro = getTaro();
     const orderItem = JSON.parse(params.item);
     const expressItem = expressList[expressIndex];
 
@@ -36,7 +38,7 @@ export const useFillInExpress = ({params}: any) => {
     const {goodsList} = orderItem;
 
     try {
-      const result = await sendContractNextBySg({
+      await sendContractNextBySg({
         packageCode: goodsList[0].packageCode,
         expressCode: get(expressItem, 'expressCode'),
         expressName: get(expressItem, 'expressName'),
@@ -45,7 +47,16 @@ export const useFillInExpress = ({params}: any) => {
         contractBillcode: goodsList[0].contractBillcode
       })
 
-      console.log(48, result);
+      Taro.navigateBack({
+        delta: 1
+      })
+
+      let { fillInExpress = 0 } = getPagesRefreshStore();
+      updatePagesRefreshStore({
+        fillInExpress: ++fillInExpress
+      });
+
+
     }catch (err) {
       console.log(err);
     }

@@ -5,7 +5,7 @@ import {CommonTab, OrderItem, Search, SearchTopWrap} from "../../common";
 import {useCommonSearch, useOrder} from "qj-bbc-mobile-store";
 
 
-const orderListJsx: React.FC = () => {
+const orderListJsx: React.FC<any> = ({refreshNum}) => {
   const {View, ScrollView} = useComponent();
   const {sysBtnObj} = useCommonSearch()
 
@@ -20,7 +20,7 @@ const orderListJsx: React.FC = () => {
     changeSearchType,
     onFinish,
     changeSearchContent
-  } = useOrder({config, searchConfig});
+  } = useOrder({config, searchConfig, refreshNum});
 
 
   return (
