@@ -1,23 +1,34 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {config} from './config';
-import {CommonTab, OrderItem} from "../../common";
+import {config, searchConfig} from './config';
+import {CommonTab, OrderItem, Search, SearchTopWrap} from "../../common";
 import {useCommonSearch, useOrder} from "qj-bbc-mobile-store";
-import {ScrollView} from '@tarojs/components';
 
 
 const orderListJsx: React.FC = () => {
-  const {View} = useComponent();
+  const {View, ScrollView} = useComponent();
   const {sysBtnObj} = useCommonSearch()
 
-  const {list, goFillIn} = useOrder();
+  const {
+    list,
+    goFillIn,
+    goOrderDetail,
+    coe,
+    changeTab,
+    onScroll,
+    searchCoe,
+    changeSearchType,
+    onFinish,
+    changeSearchContent
+  } = useOrder({config, searchConfig});
 
-  console.log(14, list);
 
   return (
     <View className={'order-list'}>
-      {/*<Search/>*/}
-        <CommonTab config={config} />
+      <SearchTopWrap>
+        <Search config={searchConfig} changeSearchType={changeSearchType} value={searchCoe} onFinish={onFinish} onChange={changeSearchContent} />
+      </SearchTopWrap>
+        <CommonTab config={config} coe={coe} changeTab={changeTab} />
         <View
           className={'order-content'}
           style={{
@@ -25,17 +36,10 @@ const orderListJsx: React.FC = () => {
           }}
         >
           <ScrollView
-            scrollY
-            style={{height: '100%'}}
+            onScroll={onScroll}
           >
-          {/*<OrderItem/>*/}
-            {/*<OrderItem/>*/}
-            {/*<OrderItem/>*/}
-            {/*<OrderItem/>*/}
-            {/*<OrderItem/>*/}
-            {/*<OrderItem/>*/}
             {
-              list.map((item: any, index: number) => <OrderItem item={item} goFillIn={goFillIn} key={index}/>)
+              list.map((item: any, index: number) => <OrderItem item={item} goOrderDetail={goOrderDetail} goFillIn={goFillIn} key={index}/>)
             }
           </ScrollView>
         </View>

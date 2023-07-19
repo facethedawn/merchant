@@ -3,7 +3,7 @@ import {useComponent} from '@brushes/simulate-component';
 import dayjs from 'dayjs';
 
 
-const orderItemJsx: React.FC<any> = ({item, goFillIn}) => {
+const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail}) => {
   const {View} = useComponent();
 
 
@@ -40,30 +40,33 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn}) => {
 
   return (
     <View className={'order-item'}>
-      <View className={'order-status'}>
-        <View className={'order-number'}>
-          订单批次号：{contractBbillcode}
+      <View onClick={goOrderDetail.bind(null, item)}>
+        <View className={'order-status'}>
+          <View className={'order-number'}>
+            订单批次号：{contractBbillcode}
+          </View>
+          {
+            handleType(dataState)
+          }
         </View>
-        {
-          handleType(dataState)
-        }
+
+        <View className={'order-item-info'}>
+          <View>下单时间：{dayjs(gmtCreate).format('YYYY-MM-DD HH-MM-SS')}</View>
+          <View>商品价格：￥{goodsMoney}  商品数量：{goodsNum}</View>
+        </View>
+        <View className={'order-item-info'}>
+          <View>{goodsReceiptMem} {goodsReceiptPhone}</View>
+          <View>{goodsReceiptArrdess}</View>
+        </View>
+
+        <View className={'order-item-info-price'}>
+          <View className={'blc'}>订单金额:￥1231</View>
+          <View className={'blc'}>运费:￥1231</View>
+          <View className={'blc'}>优惠:￥1231</View>
+          <View className={'blc'}>实付:￥1231</View>
+        </View>
       </View>
 
-      <View className={'order-item-info'}>
-        <View>下单时间：{dayjs(gmtCreate).format('YYYY-MM-DD HH-MM-SS')}</View>
-        <View>商品价格：￥{goodsMoney}  商品数量：{goodsNum}</View>
-      </View>
-      <View className={'order-item-info'}>
-        <View>{goodsReceiptMem} {goodsReceiptPhone}</View>
-        <View>{goodsReceiptArrdess}</View>
-      </View>
-
-      <View className={'order-item-info-price'}>
-        <View className={'blc'}>订单金额:￥1231</View>
-        <View className={'blc'}>运费:￥1231</View>
-        <View className={'blc'}>优惠:￥1231</View>
-        <View className={'blc'}>实付:￥1231</View>
-      </View>
       {
         dataState === 2?
           <View className={'default-btn btn'} onClick={goFillIn.bind(null, item)}>立即发货</View>

@@ -14,10 +14,13 @@ const MERCHANT = {
   QUERY_CLASS_TREE_YZF: 'web/rs/classtree/queryClasstreeYzf.json', // 获取分类
   UPDATE_Audit_OR_CANNEL_FOR_PASS: 'web/rs/sku/updateAuditOrCannelForPass.json', // 上下架
   UPDATE_SKU_EDIT_PASS: '/web/rs/resourceGoods/updateSkuEditPass.json', // 调整库存
-  QUERY_CONTRACT_PAGE_MEMBER_C_CODE:'/web/oc/contract/queryContractPageMemberCcode.json',
+  QUERY_CONTRACT_PAGE_MEMBER_C_CODE:'/web/oc/contract/queryContractPageMemberCcode.json', // 订单列表
+  GET_CONTRACT_BY_BILL_CODE: '/web/oc/contract/getContractByBillcode.json', // 订单详情
   QUERY_EXPRESS_PAGE_FOR_PROP: '/web/wl/express/queryExpressPageForProp.json', // 获取所有物流公司
   SEND_CONTRACT_NEXT_BY_SG: '/web/oc/contractEngine/sendContractNextBySg.json', // 物流信息提交
 }
+
+export const getContractByBillcode = (params = {}) => post(MERCHANT.GET_CONTRACT_BY_BILL_CODE, params);
 
 export const sendContractNextBySg = (params = {}) => post(MERCHANT.SEND_CONTRACT_NEXT_BY_SG, params);
 

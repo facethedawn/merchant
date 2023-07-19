@@ -1,8 +1,10 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 
-const addressJsx:React.FC = () => {
+const addressJsx:React.FC<any> = ({data}) => {
   const {View, SmoothView, Image} = useComponent();
+
+  const {goodsReceiptPhone, goodsReceiptArrdess, goodsReceiptMem} = data
 
   return (
     <View className={'address'}>
@@ -13,10 +15,10 @@ const addressJsx:React.FC = () => {
       />
       <View className={'info'}>
         <View className={'user-info'}>
-          <SmoothView className={'user-name'}>张三</SmoothView>
-          <SmoothView className={'user-phone'}>13512345678</SmoothView>
+          <SmoothView className={'user-name'}>{goodsReceiptMem}</SmoothView>
+          <SmoothView className={'user-phone'}>{goodsReceiptPhone}</SmoothView>
         </View>
-        <SmoothView className={'user-address'}>上海市浦东新区南汇新城镇水华路300号</SmoothView>
+        <SmoothView className={'user-address'}>{goodsReceiptArrdess}</SmoothView>
       </View>
     </View>
   )

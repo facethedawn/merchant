@@ -28,3 +28,19 @@ export const config = [
     value: '-1',
   },
 ]
+
+
+export const searchConfig  = [
+  [
+    {
+      id: 0,
+      param: 'contractBillcode',
+      label: '订单号'
+    },
+    {
+      id: 1,
+      param: 'contractBbillcode',
+      label: '批次号'
+    }
+  ],
+]
