@@ -18,13 +18,16 @@
     }
 
     .r-part {
+      flex: 1;
       text-align: left;
+
       .title {
         font-size: 14px;
         color: $font-color;
         display: flex;
         align-items: center;
         margin-bottom: 9px;
+        justify-content: space-between;
 
         .text {
           width: 126px;

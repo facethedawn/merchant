@@ -35,7 +35,7 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail}) => {
     goodsReceiptMem,
     goodsReceiptArrdess,
     goodsReceiptPhone,
-    dataState
+    dataState,
   } = item;
 
   return (
@@ -51,7 +51,7 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail}) => {
         </View>
 
         <View className={'order-item-info'}>
-          <View>下单时间：{dayjs(gmtCreate).format('YYYY-MM-DD HH-MM-SS')}</View>
+          <View>下单时间：{dayjs(gmtCreate).format('YYYY-MM-DD HH:mm:ss')}</View>
           <View>商品价格：￥{goodsMoney}  商品数量：{goodsNum}</View>
         </View>
         <View className={'order-item-info'}>
@@ -59,12 +59,12 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail}) => {
           <View>{goodsReceiptArrdess}</View>
         </View>
 
-        <View className={'order-item-info-price'}>
-          <View className={'blc'}>订单金额:￥1231</View>
-          <View className={'blc'}>运费:￥1231</View>
-          <View className={'blc'}>优惠:￥1231</View>
-          <View className={'blc'}>实付:￥1231</View>
-        </View>
+        {/*<View className={'order-item-info-price'}>*/}
+        {/*  <View className={'blc'}>订单金额:￥1231</View>*/}
+        {/*  <View className={'blc'}>运费:￥1231</View>*/}
+        {/*  <View className={'blc'}>优惠:￥1231</View>*/}
+        {/*  <View className={'blc'}>实付:￥1231</View>*/}
+        {/*</View>*/}
       </View>
 
       {

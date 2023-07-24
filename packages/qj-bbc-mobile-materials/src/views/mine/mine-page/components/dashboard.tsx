@@ -1,22 +1,25 @@
-import {memo} from "react";
+import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 import {MineList} from "./mine-list";
+import {getHost} from "qj-bbc-mobile-store";
 
-const mineDashboardJsx = () => {
+const mineDashboardJsx:React.FC<any> = ({config, merchantInfo}) => {
   const {View, Image} = useComponent();
+
+  const {userinfoCompname, userinfoLogo} = merchantInfo;
+
 
   return (
     <View className={'mine'}>
       <View className={'mine-dashboard'}>
         <View className={'bg'}>
           <Image
-            src='https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/arrow-down.png'
-            mode='widthFix'
-            className='logo'
+            src={`${getHost()}${userinfoLogo}`}
+            className='merchant-logo'
           />
-          <View className={'companyName'}>上海腾讯科技有限公司</View>
+          <View className={'companyName'}>{userinfoCompname}</View>
         </View>
-        <MineList/>
+        <MineList config={config} />
       </View>
     </View>
   )

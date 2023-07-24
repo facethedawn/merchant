@@ -1,0 +1,62 @@
+@import '../theme';
+
+.live-list {
+  min-height: 100vh;
+  background-color: $bg-color;
+  padding: 16px;
+  box-sizing: border-box;
+
+  .live-list-item {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 13px;
+
+    .main-info {
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .l-part {
+        display: flex;
+
+        .icon {
+          width: 18px;
+          height: 18px;
+          margin-right: 8px;
+        }
+
+        .title {
+          font-size: 13px;
+          font-weight: 500;
+          color: $font-color;
+        }
+      }
+
+      .r-part {
+        font-size: 12px;
+        font-weight: 500;
+
+        .red {
+          color: $color-red;
+        }
+        .grey {
+          color: $font-color;
+        }
+        .blue {
+          color: $default-color
+        }
+      }
+    }
+
+    .sub-info {
+      margin-bottom: 12px;
+      font-size: 12px;
+      color: $font-sub-color;
+
+      .sub-info-line {
+        margin-bottom: 4px;
+      }
+    }
+  }
+}

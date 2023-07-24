@@ -19,7 +19,22 @@ const MERCHANT = {
   QUERY_EXPRESS_PAGE_FOR_PROP: '/web/wl/express/queryExpressPageForProp.json', // 获取所有物流公司
   SEND_CONTRACT_NEXT_BY_SG: '/web/oc/contractEngine/sendContractNextBySg.json', // 物流信息提交
   QUERY_BY_MEMBER_C_CODE_MERCHANT: '/web/oc/refund/queryByMemberCcodeMerchant.json', //退单列表
+  LOGIN_INFO: '/web/ml/mlogin/logininfo.json', // login
+  GET_USER_SERVICE_INFO: 'web/um/userservice/getUserserviceInfo.json', // 商户信息
+  QUERY_USER_INFO_DETAIL: '/web/um/userserviceinfo/queryUserinfoDetail.json', // 商户详细信息
+  QUERY_INFUENCER_AND_CHILD: '/web/inf/infuencer/queryInfuencerAndChild.json', // 直播列表
+  D_PRICE_CONF_TYPE: '/web/pte/dpriceConf/queryDpriceConfPageForMerchant.json', //佣金-商家规则
 }
+
+export const queryUserinfoDetail = (params = {}) => get(MERCHANT.QUERY_USER_INFO_DETAIL, params);
+
+export const queryDpriceConfPageForMerchant = (params = {}) => get(MERCHANT.D_PRICE_CONF_TYPE, params);
+
+export const queryInfuencerAndChild = (params = {}) => post(MERCHANT.QUERY_INFUENCER_AND_CHILD, params);
+
+export const logininfo = (params = {}) => post(MERCHANT.LOGIN_INFO, params);
+
+export const getUserserviceInfo = (params ={}) => post(MERCHANT.GET_USER_SERVICE_INFO, params);
 
 export const queryByMemberCcodeMerchant = (params = {}) => post(MERCHANT.QUERY_BY_MEMBER_C_CODE_MERCHANT, params);
 

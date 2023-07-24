@@ -2,22 +2,30 @@ import {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
 import {CommonTab} from "../../common";
 import {config} from './config';
-import {BrokerageCommonList, ClassifyRules, GoodsRules, MerchantRules} from "./components";
+// import {BrokerageCommonList, ClassifyRules, GoodsRules, MerchantRules} from "./components";
+import {useBrokerageList} from "qj-bbc-mobile-store";
+import {MerchantRules} from "./components";
 
 const brokerageListJsx = () => {
   const {View} = useComponent();
 
+  const {coe, changeTab} = useBrokerageList();
+
   return (
     <View className={'brokerage-list'}>
-      <CommonTab config={config} style={{
-        padding: '0 40px'
-      }}/>
-      <View>
-        <ClassifyRules/>
-        <GoodsRules/>
-        <MerchantRules/>
-        <BrokerageCommonList/>
-      </View>
+      <CommonTab config={config} coe={coe} changeTab={changeTab}/>
+
+      {
+        coe === 0 ? <MerchantRules/> : null
+      }
+
+
+      {/*<View>*/}
+      {/*  <ClassifyRules/>*/}
+      {/*  <GoodsRules/>*/}
+      {/*  <MerchantRules/>*/}
+      {/*  <BrokerageCommonList/>*/}
+      {/*</View>*/}
     </View>
   )
 }

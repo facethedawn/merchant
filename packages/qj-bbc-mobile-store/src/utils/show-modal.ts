@@ -5,7 +5,7 @@ export const showModal = (title: string = '', content: any) => {
   Taro.showModal({
     title,
     content,
-    success: function (res) {
+    success: function (res: any) {
       if (res.confirm) {
         console.log('用户点击确定')
       } else if (res.cancel) {

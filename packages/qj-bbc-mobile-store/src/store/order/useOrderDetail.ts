@@ -51,6 +51,6 @@ export const useOrderDetail = ({contractBillcode}: useOrderDetail) => {
 
   return {
     loading,
-    data
+    data,
   }
 }

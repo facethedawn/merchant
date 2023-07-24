@@ -1,17 +1,15 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {useMine} from '../../../../../../qj-bbc-mobile-store';
 
-const mineListJsx: React.FC = () => {
+const mineListJsx: React.FC<any> = ({config}) => {
   const {View, Image} = useComponent();
 
-  const {config} = useMine()
 
   return (
     <View className={'mine-list'}>
       {
-        config.map(item => {
-          return <View className={'mine-list-item'} onClick={item.action}>
+        config.map((item: any, index: number) => {
+          return <View className={'mine-list-item'} onClick={item.action} key={index}>
             <View className={'l-part'}>
               <Image
                 src={item.icon}

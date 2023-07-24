@@ -2,10 +2,10 @@ import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 import dayjs from "dayjs";
 
-const orderInfoJsx:React.FC<any> = ({data}) => {
+const orderInfoJsx: React.FC<any> = ({data}) => {
   const {View, SmoothView, gmtCreate} = useComponent();
 
-  const {contractBillcode, contractBbillcode}= data
+  const {contractBillcode, contractBbillcode, contractPmode, contractRemark, packageList} = data;
 
   return (
     <View className={'order-info'}>
@@ -23,15 +23,31 @@ const orderInfoJsx:React.FC<any> = ({data}) => {
       </View>
       <View className={'order-info-item'}>
         <View className={'lPart'}>支付方式</View>
-        <SmoothView className={'rPart'}>123123123213</SmoothView>
+        <SmoothView className={'rPart'}>{contractPmode === '1' ? '线下' : '线上'}</SmoothView>
       </View>
       <View className={'order-info-item'}>
         <View className={'lPart'}>配送方式</View>
-        <SmoothView className={'rPart'}>123123123213</SmoothView>
+        <SmoothView className={'rPart'}>
+          {
+            (() => {
+              if (packageList?.length) {
+                if (packageList[0].packageMode === 1) {
+                  return '自提'
+                }else {
+                  console.log(12313123123)
+                  return '快递'
+                }
+              } else {
+                console.log(123123213)
+                return '未知';
+              }
+            })()
+          }
+        </SmoothView>
       </View>
       <View className={'order-info-item'}>
         <View className={'lPart'}>备注</View>
-        <SmoothView className={'rPart tip'}>123123123213</SmoothView>
+        <SmoothView className={'rPart tip'}>{contractRemark?contractRemark: '无'}</SmoothView>
       </View>
     </View>
   )

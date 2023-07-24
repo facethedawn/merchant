@@ -15,7 +15,7 @@ const oderDetailJsx:React.FC<any> = ({contractBillcode}) => {
         <Address data={data} />
         <GoodsInfo data={data}/>
         <OrderInfo data={data}/>
-        <PriceInfo/>
+        <PriceInfo data={data}/>
       </WrapLoading>
     </View>
 
