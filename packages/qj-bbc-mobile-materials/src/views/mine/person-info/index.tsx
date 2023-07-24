@@ -56,11 +56,11 @@ const personInfoJsx:React.FC = () => {
       <View className={'person-info-wrap'}>
         <View className={'person-info-item'}>
           <View className={'l-part'}>商品品牌</View>
-          <View className={'r-part'}></View>
+          <View className={'r-part'}>{handleStupidArr(umUserinfoQuaDomainList, 'brandName')}</View>
         </View>
         <View className={'person-info-item'}>
           <View className={'l-part'}>商户类目</View>
-          <View className={'r-part'}></View>
+          <View className={'r-part'}>{handleStupidArr(umUserinfoQuaDomainList, 'classtreeName')}</View>
         </View>
         <View className={'person-info-item'}>
           <View className={'l-part'}>联系人名称</View>

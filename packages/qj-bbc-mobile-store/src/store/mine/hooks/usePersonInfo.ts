@@ -38,6 +38,14 @@ export const usePersonInfo = () => {
         userinfoQuaVaule1: 'shopdeEdate',
         userinfoQuaVaule: ''
       },
+      {
+        userinfoQuaVaule1: 'brandName',
+        userinfoQuaVaule: ''
+      },
+      {
+        userinfoQuaVaule1: 'classtreeName',
+        userinfoQuaVaule: ''
+      },
     ]
   });
 
