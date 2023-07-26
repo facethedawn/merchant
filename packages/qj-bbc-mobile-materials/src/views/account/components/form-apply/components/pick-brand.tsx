@@ -3,27 +3,34 @@ import {useComponent} from '@brushes/simulate-component';
 import {applyContext} from "../../../apply-settle";
 
 
-const pickClassifyJsx: React.FC<any> = ({arr = [], showPopup, onChange, showArr}) => {
+const pickBrandJsx: React.FC<any> = (
+  {
+    state,
+    arr = [],
+    setState,
+    onChange,
+    showArr
+  }) => {
+
   const {View, Popup, CheckboxGroup, Checkbox} = useComponent();
   const {
-    popupShow,
-    setPopupShow,
+
   } = useContext(applyContext);
 
   return (
     <View>
-      <View onClick={() => showPopup()}>{
-        showArr.length === 0 ? '请选择' :
+      <View onClick={() => setState(true)}>{
+        showArr.length === 0 ? '请选择项目' :
           showArr.map((coe: any) => {
             return arr[+coe]['name'];
-          }).toString()
+          }).join(', ')
       }</View>
-      <Popup popupVisible={popupShow} popupHandler={() => setPopupShow(false)}>
-        <CheckboxGroup onChange={onChange}>
+      <Popup popupVisible={state} popupHandler={() => setState(false)}>
+        <CheckboxGroup onChange={onChange} className={'popBox'}>
           {
             arr.map((item: any, index: number) => {
               return (
-                <Checkbox key={index} value={item.value} checked={!!showArr.includes(item.value)}>
+                <Checkbox className={'popBox-item'} key={index} value={item.value} checked={!!showArr.includes(item.value)}>
                   {item.name}
                 </Checkbox>
               )
@@ -35,4 +42,4 @@ const pickClassifyJsx: React.FC<any> = ({arr = [], showPopup, onChange, showArr}
   )
 }
 
-export const PickClassify = memo(pickClassifyJsx);
+export const PickBrand = memo(pickBrandJsx);

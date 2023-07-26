@@ -6,3 +6,4 @@ export * from './review-progress';
 export * from './agreement';
 export * from './mobile-login';
 export * from './change-pwd';
+export * from './apply-progress';

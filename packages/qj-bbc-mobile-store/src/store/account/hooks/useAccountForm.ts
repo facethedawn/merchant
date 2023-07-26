@@ -38,6 +38,7 @@ export const useAccountForm = (type?: string) => {
   });
   const [classifyList, setClassifyList] = useState<any>([]);
   const [classify, setClassify] = useState('');
+  const [popupShow, setPopupShow] = useState(false);
 
 
   useEffect(() => {
@@ -152,6 +153,8 @@ export const useAccountForm = (type?: string) => {
     classifyList,
     setClassifyList,
     classify,
-    setClassify
+    setClassify,
+    popupShow,
+    setPopupShow
   }
 }

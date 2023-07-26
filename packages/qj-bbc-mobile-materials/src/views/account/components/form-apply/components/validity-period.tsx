@@ -1,23 +1,21 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {useAccountForm} from '../../../../../../../qj-bbc-mobile-store';
 
-const validityPeriodJsx: React.FC = () => {
+const validityPeriodJsx: React.FC<any> = ({onChange, start, end}: any) => {
   const {View, Picker} = useComponent();
-  const {startTime, selectStart, endTime, selectEnd} = useAccountForm();
 
 
   return (
     <View>
-      <Picker mode='date' onChange={selectStart}>
+      <Picker mode='date' onChange={onChange.bind(null, 'start')}>
         {
-          startTime.label === '' ? '请选择开始时间' : startTime.label
+          start === '' ? '请选择开始时间' : start
         }
       </Picker>
       -
-      <Picker mode='date' onChange={selectEnd}>
+      <Picker mode='date' onChange={onChange.bind(null, 'end')}>
         {
-          endTime.label === '' ? '请选择结束时间' : endTime.label
+          end === '' ? '请选择结束时间' : end
         }
       </Picker>
     </View>

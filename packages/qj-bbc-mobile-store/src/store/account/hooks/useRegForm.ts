@@ -16,7 +16,7 @@ export const useRegForm = ({lockForm}: any) => {
     }
 
     if(userPwsswd !== userPwsswdAgin) {
-      taroMessage('两次密码不一致', 'error');
+      taroMessage('密码不一致', 'error');
       return;
     }
 
@@ -26,7 +26,7 @@ export const useRegForm = ({lockForm}: any) => {
       });
       console.log(result);
       if(result.success === true) {
-        jumpLink(routerMap.goodList);
+        jumpLink(routerMap.accountLogin);
       }
 
     }catch (err) {

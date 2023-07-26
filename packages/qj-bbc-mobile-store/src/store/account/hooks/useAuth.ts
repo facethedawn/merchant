@@ -16,7 +16,7 @@ export const useAuth = () => {
         console.log('未失效')
       },
       fail: () => {
-        taroMessage('授权已失效', 'error');
+        // taroMessage('授权已失效', 'error');
         console.log('失效')
       }
     })

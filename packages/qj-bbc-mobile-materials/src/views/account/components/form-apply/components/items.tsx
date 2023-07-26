@@ -1,25 +1,41 @@
-import React, {memo} from "react";
+import React, {memo, useContext, useState} from "react";
 import {useComponent, antdMobile} from '@brushes/simulate-component';
 import {UpdateImg} from "./update-img";
-import {PickAddress} from "./pick-address";
 import {ValidityPeriod} from "./validity-period";
-import {PickClassify} from "./pick-classify";
+import {PickBrand} from "./pick-brand";
 // import {mobileRex, checkPwd } from "../../../../utils";
-import {useApply} from 'qj-bbc-mobile-store';
+import {applyContext} from '../../../apply-settle';
+import {PickProvince} from "./pick-province";
+import {PickCity} from "./pick-city";
+import {PickArea} from "./pick-area";
 
-const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
+const accountFormItemsApplyJsx: React.FC<any> = ({}) => {
   const {View} = useComponent();
   const {Form, Input} = antdMobile;
-  const {chooseLogo} = useApply({lockForm: 'true'})
+  const [brandShow, setBrandShow] = useState(false);
+  const [classifyShow, setClassifyShow] = useState(false);
+  const {
+    brandList,
+    pickBrand,
+    brand,
+    classifyList,
+    pickClassify,
+    classify,
+    chooseImg,
+    logo,
+    license,
+    onChangeTime,
+    startTime,
+    endTime,
+  } = useContext(applyContext);
 
-  console.log(13, form)
 
   return (
     <View>
       {/*商家名称*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'merchantName'}
+          name={'userinfoCompname'}
           label={'商家名称'}
           rules={[
             {
@@ -38,7 +54,7 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
       {/*商家简称*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'merchantShortName'}
+          name={'companyShortname'}
           label={'商家简称'}
         >
           <Input
@@ -55,7 +71,7 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
           label={'商户logo上传'}
         >
           <View>
-            <UpdateImg handle = {chooseLogo}/>
+            <UpdateImg handle={chooseImg.bind(null, 'logo')} img={logo} />
           </View>
         </Form.Item>
       </View>
@@ -63,7 +79,7 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
       {/*营业执照编号*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'licenseNO'}
+          name={'userinfoCertNo'}
           label={'营业执照编号'}
         >
           <Input
@@ -76,7 +92,7 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
       {/*营业执照地址*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'licenseAddress'}
+          name={'companyAddress'}
           label={'营业执照地址'}
         >
           <Input
@@ -89,11 +105,11 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
       {/*营业执照上传*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'licenseUpload'}
+          name={'userinfoCertUrl'}
           label={'营业执照上传'}
         >
           <View>
-            <UpdateImg/>
+            <UpdateImg handle={chooseImg.bind(null, 'license')} img={license} />
           </View>
         </Form.Item>
       </View>
@@ -101,7 +117,7 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
       {/*营业范围*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'scope'}
+          name={'userinfoScope'}
           label={'营业范围'}
         >
           <Input
@@ -117,45 +133,77 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
           name={'date'}
           label={'营业期限'}
         >
-          <ValidityPeriod/>
+          <ValidityPeriod start={startTime} end={endTime} onChange={onChangeTime}/>
         </Form.Item>
       </View>
 
 
-      {/*企业所在地*/}
+      {/*企业所在省*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'area'}
-          label={'企业所在地'}
+          name={'province'}
+          label={'企业所在省'}
           rules={[
             {
-              // required: true,
-              message: `企业所在地不能为空`
+              required: true,
+              message: `企业所在省不能为空`
             },
           ]}
         >
-          <PickAddress/>
+          <PickProvince/>
+        </Form.Item>
+      </View>
+
+      {/*企业所在市*/}
+      <View className={'accountFormApplyItem'}>
+        <Form.Item
+          name={'city'}
+          label={'企业所在市'}
+          rules={[
+            {
+              required: true,
+              message: `企业所在市不能为空`
+            },
+          ]}
+        >
+          <PickCity />
+        </Form.Item>
+      </View>
+
+      {/*企业所在区*/}
+      <View className={'accountFormApplyItem'}>
+        <Form.Item
+          name={'area'}
+          label={'企业所在区'}
+          rules={[
+            {
+              required: true,
+              message: `企业所在区不能为空`
+            },
+          ]}
+        >
+          <PickArea />
         </Form.Item>
       </View>
 
       {/*企业详细地址*/}
-      <View className={'accountFormApplyItem'}>
-        <Form.Item
-          name={'address'}
-          label={'企业详细地址'}
-          rules={[
-            {
-              required: true,
-              message: `企业详细地址不能为空`
-            },
-          ]}
-        >
-          <Input
-            clearable
-            placeholder={'请输入企业详细地址'}
-          />
-        </Form.Item>
-      </View>
+      {/*<View className={'accountFormApplyItem'}>*/}
+      {/*  <Form.Item*/}
+      {/*    name={'address'}*/}
+      {/*    label={'企业详细地址'}*/}
+      {/*    rules={[*/}
+      {/*      {*/}
+      {/*        required: true,*/}
+      {/*        message: `企业详细地址不能为空`*/}
+      {/*      },*/}
+      {/*    ]}*/}
+      {/*  >*/}
+      {/*    <Input*/}
+      {/*      clearable*/}
+      {/*      placeholder={'请输入企业详细地址'}*/}
+      {/*    />*/}
+      {/*  </Form.Item>*/}
+      {/*</View>*/}
 
       {/*商品品牌*/}
       <View className={'accountFormApplyItem'}>
@@ -169,11 +217,17 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
             },
           ]}
         >
-          <PickClassify/>
+          <PickBrand
+            state={brandShow}
+            arr={brandList}
+            setState={setBrandShow}
+            onChange={pickBrand}
+            showArr={brand}
+          />
         </Form.Item>
       </View>
 
-      {/*商品品牌*/}
+      {/*类目品牌*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
           name={'classify'}
@@ -185,14 +239,20 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
             },
           ]}
         >
-          <PickClassify/>
+          <PickBrand
+            state={classifyShow}
+            arr={classifyList}
+            setState={setClassifyShow}
+            onChange={pickClassify}
+            showArr={classify}
+          />
         </Form.Item>
       </View>
 
       {/*联系人名称*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'personName'}
+          name={'userinfoCon'}
           label={'联系人名称'}
           rules={[
             {
@@ -211,7 +271,7 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
       {/*联系人电话*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'personPhone'}
+          name={'userinfoConPhone'}
           label={'联系人电话'}
           rules={[
             {
@@ -230,7 +290,7 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
       {/*联系人邮箱*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'personMail'}
+          name={'userinfoConEmail'}
           label={'联系人邮箱'}
         >
           <Input
@@ -243,7 +303,7 @@ const accountFormItemsApplyJsx:React.FC<any> = ({form}) => {
       {/*客服电话*/}
       <View className={'accountFormApplyItem'}>
         <Form.Item
-          name={'hotline'}
+          name={'servicePhone'}
           label={'客服电话'}
           rules={[
             {

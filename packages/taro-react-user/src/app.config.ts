@@ -1,6 +1,8 @@
 export default defineAppConfig({
   pages: [
     'pages/goods-list/index',
+    'account/apply-progress/index',
+    'account/apply/index',
     'pages/live-list/index',
     'pages/brokerage-list/index',
     'pages/order-list/index',
@@ -13,7 +15,6 @@ export default defineAppConfig({
     'pages/index/index',
     'pages/detail/index',
     'pages/subpage/index',
-    'account/apply/index',
     'account/auth/index',
     'account/mobileLogin/index',
     'account/register/index',

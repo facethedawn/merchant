@@ -1,17 +1,13 @@
-import React, {memo} from "react";
+import React, {memo, useContext} from "react";
 import {useComponent, antdMobile} from '@brushes/simulate-component';
 import {AccountFormSubmitBtn} from "../account-form-submit-btn";
-import {useApply} from 'qj-bbc-mobile-store';
 import {AccountFormItemsApply} from "./components";
+import {applyContext} from '../../apply-settle';
 
-interface formRegJsxType {
-  lockForm: string
-}
-
-const formApplyJsx: React.FC<formRegJsxType> = ({lockForm}) => {
+const formApplyJsx: React.FC<any> = () => {
   const {View} = useComponent();
   const {Form} = antdMobile;
-  const {form, onFinish} = useApply({lockForm})
+  const {form, onFinish} = useContext(applyContext);
 
   return (
     <View className={'accountForm'}>
@@ -23,7 +19,7 @@ const formApplyJsx: React.FC<formRegJsxType> = ({lockForm}) => {
         }
         onFinish={onFinish}
       >
-        <AccountFormItemsApply form={form} />
+        <AccountFormItemsApply />
       </Form>
     </View>
   )

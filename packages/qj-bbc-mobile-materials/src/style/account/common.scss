@@ -58,6 +58,9 @@
     text-align: center;
     color: #bbb;
   }
+  .img {
+    width: 100px;
+  }
 }
 
 .agreementWrap {
@@ -98,4 +101,13 @@
   justify-content: space-between;
   color: $default-color;
   font-size: 14px;
+}
+
+.popBox {
+  padding: 16px 16px 0;
+
+  .popBox-item {
+    margin-right: 10px;
+    margin-bottom: 16px;
+  }
 }

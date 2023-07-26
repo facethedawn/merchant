@@ -1,4 +1,5 @@
 export const routerMap = {
+  applyProgress: '/account/apply-progress/index',
   goodsSearch: '/pages/goods-search/index',
   brokerageList:'/pages/brokerage-list/index',
   liveList: '/pages/live-list/index',
