@@ -105,6 +105,8 @@
 
 .popBox {
   padding: 16px 16px 0;
+  max-height: 50vh;
+  overflow: scroll;
 
   .popBox-item {
     margin-right: 10px;

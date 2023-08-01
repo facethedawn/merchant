@@ -35,7 +35,7 @@ const sideContentJsx: React.FC<any> = (
   return (
     <View className={'side-content'}>
       <View className={'dashboard'}>
-        <View className={'allGoods'}>全部商品 {all.current} 个 {filterPopupShow+ ''}</View>
+        <View className={'allGoods'}>全部商品 {all.current} 个</View>
         <View className={'filter'} onClick={() => setFilterPopupShow(true)}>
           <Image
             src='https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/filter.png'

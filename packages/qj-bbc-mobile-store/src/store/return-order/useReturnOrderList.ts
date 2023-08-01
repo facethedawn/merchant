@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
-import {useImmutableCallback} from "@brushes/utils";
-import {queryByMemberCcodeMerchant} from "qj-bbc-api";
+import {getTaro, useImmutableCallback, taroMessage} from "@brushes/utils";
+import {queryByMemberCcodeMerchant, verificationRefundMerchant, supplierOcAudit, refuseApplication} from "qj-bbc-api";
 import {isEmpty} from "lodash-es";
 import {jumpLink} from "../../utils";
 import {routerMap} from "../../router-map";
@@ -97,6 +97,66 @@ export const useReturnOrderList = ({config, searchConfig}: any) => {
     searchContent.current = target.detail.value;
   }
 
+  const handleCheckReturnOrder = (item: any, type: string) => {
+    const Taro = getTaro();
+    const {contractBillcode, refundCode} = item;
+    const userinfoCode = Taro.getStorageSync('userInfoCode');
+
+    if(type === 'pass') {
+      Taro.showModal({
+        title: '提示',
+        content: '确定审核通过此退单?',
+        success:  async(res:any) => {
+          if (res.confirm) {
+            try {
+              const resultF = await verificationRefundMerchant({
+                userinfoCode,
+                contractBillcode
+              })
+              if (resultF.dataObj !== true) {
+                taroMessage('订单参与营销', 'error');
+              }else {
+                await supplierOcAudit({
+                  refundCode,
+                  memo:'',
+                  backType: 21
+                })
+                init();
+              }
+            }catch (err) {
+              console.log(err);
+            }
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    } else {
+      Taro.showModal({
+        title: '提示',
+        content: '确定审核拒绝此退单?',
+        success: async (res:any)=> {
+          if (res.confirm) {
+            try {
+              await refuseApplication({
+                refundCode,
+                memo: '商家拒绝'
+              })
+              init();
+            }catch (err) {
+              console.log(err);
+            }
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+
+
+
+  }
+
   return {
     loading,
     list,
@@ -108,6 +168,7 @@ export const useReturnOrderList = ({config, searchConfig}: any) => {
     searchCoe,
     changeSearchType,
     onFinish,
-    changeSearchContent
+    changeSearchContent,
+    handleCheckReturnOrder
   }
 }

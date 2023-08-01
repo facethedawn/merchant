@@ -5,3 +5,4 @@ export * from './validator';
 export * from './upload-img';
 export * from './handleTree';
 export * from './Host';
+export * from './check-apply';

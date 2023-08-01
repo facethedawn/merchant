@@ -35,11 +35,11 @@ const goodsListJsx: React.FC = () => {
     changeSearchType,
     chooseSearchTypeIndex,
     goGoodsSearch,
-    handleChangeSearchContent
+    handleChangeSearchContent,
   } = useGoodsList({param: '', refreshNum:1, config });
 
   return (
-    <View className={'goods-list'}>
+    <View className={'goods-list'} id={'a'}>
       <SearchTopWrap>
         <Search config={config} changeSearchType={changeSearchType} value={chooseSearchTypeIndex} onFinish={goGoodsSearch} onChange={handleChangeSearchContent} />
       </SearchTopWrap>

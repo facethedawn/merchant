@@ -20,7 +20,7 @@ const MERCHANT = {
   SEND_CONTRACT_NEXT_BY_SG: '/web/oc/contractEngine/sendContractNextBySg.json', // 物流信息提交
   QUERY_BY_MEMBER_C_CODE_MERCHANT: '/web/oc/refund/queryByMemberCcodeMerchant.json', //退单列表
   LOGIN_INFO: '/web/ml/mlogin/logininfo.json', // login
-  GET_USER_SERVICE_INFO: 'web/um/userservice/getUserserviceInfo.json', // 商户信息
+  GET_USER_SERVICE_INFO: '/web/um/userservice/getUserserviceInfo.json', // 商户信息
   QUERY_USER_INFO_DETAIL: '/web/um/userserviceinfo/queryUserinfoDetail.json', // 商户详细信息
   QUERY_INFUENCER_AND_CHILD: '/web/inf/infuencer/queryInfuencerAndChild.json', // 直播列表
   D_PRICE_CONF_TYPE: '/web/pte/dpriceConf/queryDpriceConfPageForMerchant.json', //佣金-商家规则
@@ -29,7 +29,16 @@ const MERCHANT = {
   QUERY_ROAD_PAGE: '/web/bs/road/queryRoadPage.json', //获取区code
   SAVE_UPDATE_USER_INFO_APPLY: '/web/um/userInfoAuth/saveUpdateUserinfoapply.json', // 申请入驻
   QUERY_USER_APPLY_PAGE: '/web/um/userInfoAuth/queryUserApplyPage.json', // 检测商家状态
+  VERIFICATION_REFUND_MERCHANT: '/web/oc/refund/verificationRefundMerchant.json', // 售后-审核通过第一步
+  SUPPLIER_OC_AUDIT: '/web/oc/refund/supplierOcAudit.json', // 售后-审核通过第二步
+  REFUSE_APPLICATION: '/web/oc/refund/refuseApplication.json', // 售后-审核拒绝
 }
+
+export const refuseApplication = (params = {}) => post(MERCHANT.REFUSE_APPLICATION, params);
+
+export const supplierOcAudit = (params = {}) => post(MERCHANT.SUPPLIER_OC_AUDIT, params);
+
+export const verificationRefundMerchant = (params = {}) => post(MERCHANT.VERIFICATION_REFUND_MERCHANT, params);
 
 export const queryUserApplyPage = (params = {}) => get(MERCHANT.QUERY_USER_APPLY_PAGE, params);
 

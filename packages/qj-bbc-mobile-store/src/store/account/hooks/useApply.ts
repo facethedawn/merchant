@@ -5,6 +5,7 @@ import {useCallback, useEffect, useState} from "react";
 import {isNull, isEmpty, get} from "lodash-es";
 import {Form} from 'antd-mobile';
 import {getTaro, getBaseUrl, taroMessage} from "@brushes/utils";
+import {jumpLink} from "../../../utils";
 
 const baseUrl = getBaseUrl();
 
@@ -390,6 +391,9 @@ export const useApply = () => {
         paramJson: JSON.stringify(resultObj)
       })
       taroMessage('提交成功');
+
+      jumpLink()
+
     }catch (err) {
       console.log(err);
     }

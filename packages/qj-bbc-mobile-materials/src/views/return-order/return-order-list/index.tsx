@@ -18,7 +18,8 @@ const returnOrderListJsx: React.FC = () => {
     searchCoe,
     changeSearchType,
     onFinish,
-    changeSearchContent
+    changeSearchContent,
+    handleCheckReturnOrder
   } = useReturnOrderList({config, searchConfig});
 
   return (
@@ -37,7 +38,14 @@ const returnOrderListJsx: React.FC = () => {
           onScroll={onScroll}
         >
           {
-            list.map((item: any, index: number) => <OrderItem item={item} goOrderDetail={goOrderDetail} goFillIn={goFillIn} key={index}/>)
+            list.map((item: any, index: number) => <OrderItem
+              item={item}
+              goOrderDetail={goOrderDetail}
+              goFillIn={goFillIn}
+              key={index}
+              type={'returnOrder'}
+              handleCheckReturnOrder={handleCheckReturnOrder}
+            />)
           }
         </ScrollView>
       </View>

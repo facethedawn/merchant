@@ -1,0 +1,58 @@
+.share {
+  background-color: rgba(#000, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .share-content {
+    width: 280PX;
+
+    .share-canvas {
+      height: 384PX;
+    }
+
+    .dashboard {
+      height: 102PX;
+      width: 100%;
+      background-color: #FFFFFF;
+      border-bottom-left-radius: 10PX;
+      border-bottom-right-radius: 10PX;
+      display: flex;
+      justify-content: space-between;
+
+      .dashboard-item {
+        flex: 1;
+        text-align: center;
+
+        .icon {
+          width: 44PX;
+          height: 44PX;
+          display: block;
+          margin: 16px auto 8px;
+        }
+
+        .txt {
+          display: inline-block;
+          font-size: 12px;
+          color: #394259;
+          background-color: transparent;
+          border: 0 none;
+
+          &:after {
+            border: 0 none;
+          }
+        }
+      }
+
+
+    }
+  }
+
+
+}

@@ -39,7 +39,13 @@ const orderListJsx: React.FC<any> = ({refreshNum}) => {
             onScroll={onScroll}
           >
             {
-              list.map((item: any, index: number) => <OrderItem item={item} goOrderDetail={goOrderDetail} goFillIn={goFillIn} key={index}/>)
+              list.map((item: any, index: number) => <OrderItem
+                item={item}
+                goOrderDetail={goOrderDetail}
+                goFillIn={goFillIn}
+                key={index}
+                type={'order'}
+              />)
             }
           </ScrollView>
         </View>

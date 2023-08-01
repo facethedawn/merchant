@@ -9,7 +9,7 @@ export const config = [
   },
   {
     label: '审核通过',
-    value: '1',
+    value: '8',
   },
   {
     label: '审核拒绝',

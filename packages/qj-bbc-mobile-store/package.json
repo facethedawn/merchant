@@ -9,9 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "html2canvas": "^1.4.1",
     "lodash-es": "^4.17.21",
-    "react": "^18.2.0",
-    "qj-bbc-api": "0.0.1"
+    "qj-bbc-api": "0.0.1",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.7"
