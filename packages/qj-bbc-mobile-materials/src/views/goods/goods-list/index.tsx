@@ -36,6 +36,8 @@ const goodsListJsx: React.FC = () => {
     chooseSearchTypeIndex,
     goGoodsSearch,
     handleChangeSearchContent,
+    price,
+    changePrice
   } = useGoodsList({param: '', refreshNum:1, config });
 
   return (
@@ -76,6 +78,8 @@ const goodsListJsx: React.FC = () => {
             setInventoryMax={setInventoryMax}
             changeGoodsInfoSubmit={changeGoodsInfoSubmit}
             changeInventory={changeInventory}
+            price={price}
+            changePrice={changePrice}
           />
       </View>
     </View>

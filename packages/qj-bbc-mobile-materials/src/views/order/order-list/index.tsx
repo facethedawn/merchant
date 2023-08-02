@@ -19,7 +19,8 @@ const orderListJsx: React.FC<any> = ({refreshNum}) => {
     searchCoe,
     changeSearchType,
     onFinish,
-    changeSearchContent
+    changeSearchContent,
+    cancelOrder,
   } = useOrder({config, searchConfig, refreshNum});
 
 
@@ -45,6 +46,7 @@ const orderListJsx: React.FC<any> = ({refreshNum}) => {
                 goFillIn={goFillIn}
                 key={index}
                 type={'order'}
+                cancelOrder={cancelOrder}
               />)
             }
           </ScrollView>

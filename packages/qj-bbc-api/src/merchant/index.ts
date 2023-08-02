@@ -33,7 +33,10 @@ const MERCHANT = {
   SUPPLIER_OC_AUDIT: '/web/oc/refund/supplierOcAudit.json', // 售后-审核通过第二步
   REFUSE_APPLICATION: '/web/oc/refund/refuseApplication.json', // 售后-审核拒绝
   UPDATE_UM_USER_PW: '/web/ml/muser/updateUmuserPw.json', // 修改密码
+  UPDATE_CONTRACT_STATE_BUI_MAT: '/web/oc/contract/updateContractStateBuiMat.json', // 取消订单
 }
+
+export const updateContractStateBuiMat = (params = {}) => post(MERCHANT.UPDATE_CONTRACT_STATE_BUI_MAT, params);
 
 export const updateUmuserPw = (params = {}) => post(MERCHANT.UPDATE_UM_USER_PW, params);
 

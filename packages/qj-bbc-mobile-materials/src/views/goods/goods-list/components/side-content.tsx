@@ -28,7 +28,9 @@ const sideContentJsx: React.FC<any> = (
     setInventoryMax,
     changeGoodsInfoSubmit,
     changeInventory,
-    loading
+    loading,
+    changePrice,
+    price
   }) => {
 
   const {View, Image, WrapLoading} = useComponent();
@@ -74,10 +76,12 @@ const sideContentJsx: React.FC<any> = (
         setPopupShow={setPopupShow}
         chooseItem={chooseItem}
         inventory={inventory}
+        price={price}
         setInventoryMin={setInventoryMin}
         setInventoryMax={setInventoryMax}
         changeGoodsInfoSubmit={changeGoodsInfoSubmit}
         changeInventory={changeInventory}
+        changePrice={changePrice}
       />
       <GoodsPopupFilter
         filterPopupShow={filterPopupShow}

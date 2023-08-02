@@ -3,7 +3,19 @@ import {useComponent} from "@brushes/simulate-component";
 import {getHost} from "qj-bbc-mobile-store";
 
 
-const goodsPopupContentJsx:React.FC<any> = ({popupShow, setPopupShow, chooseItem, inventory, setInventoryMin, setInventoryMax, changeGoodsInfoSubmit, changeInventory}) => {
+const goodsPopupContentJsx:React.FC<any> = (
+  {
+    popupShow,
+    setPopupShow,
+    chooseItem,
+    inventory,
+    setInventoryMin,
+    setInventoryMax,
+    changeGoodsInfoSubmit,
+    changeInventory,
+    price,
+    changePrice
+  }) => {
 
   const {View, Popup, Image, Input} = useComponent();
   const {goodsName, dataPic, goodsShowno, goodsNum, pricesetNprice, skuName} = chooseItem
@@ -46,7 +58,7 @@ const goodsPopupContentJsx:React.FC<any> = ({popupShow, setPopupShow, chooseItem
           <View className={'l-part'}>价格：</View>
           <View className={'price-item'}>
             <View className={'txt'}>￥</View>
-            <Input className={'fill-in'} value={pricesetNprice} />
+            <Input className={'fill-in'} type={'number'} value={price} onChange={changePrice} />
           </View>
         </View>
 

@@ -3,7 +3,7 @@ import {useComponent} from '@brushes/simulate-component';
 import dayjs from 'dayjs';
 
 
-const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handleCheckReturnOrder}) => {
+const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handleCheckReturnOrder, cancelOrder}) => {
   const {View} = useComponent();
 
 
@@ -40,6 +40,15 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handl
     }
   }
 
+  const deliveryType = (contractPumode: string) => {
+    switch (contractPumode) {
+      case '1':
+        return '自提';
+      case '0':
+        return '快递';
+    }
+  }
+
   const {
     contractBbillcode,
     gmtCreate,
@@ -50,7 +59,9 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handl
     goodsReceiptPhone,
     dataState,
     refundMeo,
-    refundMoney
+    refundMoney,
+    contractPumode,
+    contractId
   } = item;
 
   return (
@@ -75,6 +86,7 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handl
           <View>商品价格：￥{goodsMoney}  商品数量：{goodsNum}</View>
         </View>
         <View className={'order-item-info'}>
+          <View>配送方式：{deliveryType(contractPumode)}</View>
           <View>{goodsReceiptMem} {goodsReceiptPhone}</View>
           <View>{goodsReceiptArrdess}</View>
         </View>
@@ -95,6 +107,12 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handl
       {
         dataState === 2 && type === 'order'?
           <View className={'default-btn btn'} onClick={goFillIn.bind(null, item)}>立即发货</View>
+          : null
+      }
+
+      {
+        dataState === 1 && type === 'order'?
+          <View className={'default-btn btn'} onClick={cancelOrder.bind(null, contractId)}>取消订单</View>
           : null
       }
 

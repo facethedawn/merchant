@@ -51,6 +51,9 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
   // 调整库存数
   const [inventory, setInventory] = useState(0);
 
+  // 商品价格
+  const [price, setPrice] = useState(0);
+
   const lock = useRef(false);
 
   const [chooseSearchTypeIndex, setChooseSearchTypeIndex] = useState(0);
@@ -135,6 +138,7 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
       setChooseItem(item);
       setPopupShow(true);
       setInventory(item.goodsNum);
+      setPrice(item.pricesetNprice);
     } else if (state === 2) {
       taroMessage('请先下架商品', 'error');
     }
@@ -172,7 +176,8 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
         skuId,
         dataOpbillstate,
         skuNo,
-        goodsSupplynum: inventory
+        goodsSupplynum: inventory,
+        pricesetNprice: price,
       })
       setPopupShow(false);
       init()
@@ -189,8 +194,12 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
     setInventory(9999);
   }
 
-  const changeInventory = (val: number) => {
-    setInventory(val)
+  const changeInventory = (formVal: any) => {
+    setInventory(formVal.detail.value);
+  }
+
+  const changePrice = (formVal:any) => {
+    setPrice(formVal.detail.value)
   }
 
   const changeSearchType = (e: any) => {
@@ -236,6 +245,8 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
     changeSearchType,
     chooseSearchTypeIndex,
     goGoodsSearch,
-    handleChangeSearchContent
+    handleChangeSearchContent,
+    price,
+    changePrice,
   }
 }

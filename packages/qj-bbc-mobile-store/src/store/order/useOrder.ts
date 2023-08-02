@@ -1,5 +1,5 @@
-import {queryContractPageMemberCcode} from 'qj-bbc-api';
-import {useImmutableCallback} from "@brushes/utils";
+import {queryContractPageMemberCcode, updateContractStateBuiMat} from 'qj-bbc-api';
+import {getTaro, useImmutableCallback} from "@brushes/utils";
 import {useEffect, useRef, useState} from "react";
 import {isEmpty} from "lodash-es";
 import {jumpLink} from "../../utils";
@@ -24,10 +24,6 @@ export const useOrder = ({config, searchConfig, refreshNum = 0}: any) => {
   const [searchCoe, setSearchCoe] = useState(0);
 
   const searchContent = useRef('');
-
-  console.log(28, refreshNum)
-
-
 
 
   useEffect(() => {
@@ -104,6 +100,31 @@ export const useOrder = ({config, searchConfig, refreshNum = 0}: any) => {
     searchContent.current = target.detail.value;
   }
 
+  const cancelOrder =  (contractId: number) => {
+    const Taro = getTaro();
+
+    Taro.showModal({
+      title: '提示',
+      content: '确定要取消此订单吗？',
+      success:  async(res: any) => {
+        if (res.confirm) {
+          try {
+            await updateContractStateBuiMat({
+              dataState: -1,
+              contractId
+            })
+            console.log(113)
+            init()
+          }catch (err) {
+            console.log(err);
+          }
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  }
+
   return {
     loading,
     list,
@@ -115,6 +136,7 @@ export const useOrder = ({config, searchConfig, refreshNum = 0}: any) => {
     searchCoe,
     changeSearchType,
     onFinish,
-    changeSearchContent
+    changeSearchContent,
+    cancelOrder
   }
 }

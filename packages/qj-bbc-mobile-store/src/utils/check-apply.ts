@@ -1,7 +1,7 @@
 import {getTaro} from '@brushes/utils';
 import {queryUserApplyPage, getUserserviceInfo} from 'qj-bbc-api';
 import {routerMap} from '../router-map';
-import {jumpLink, jumpTabBar} from './jump-link';
+import {jumpLink} from './jump-link';
 import {stackLength} from "../store";
 import {errorCallback} from "@brushes/request";
 
@@ -15,8 +15,13 @@ export const checkApply = async () => {
     const {dataState} = checkResult;
 
     if (dataState === 0) {
-      jumpTabBar(routerMap.goodList);
-      return;
+      return Taro.navigateBack({
+        delta: stackLength(),
+        success: (res: any) => {
+          console.log('调用前', res);
+          errorCallback();
+        }
+      })
     }
     await checkFunc(userInfoCode);
 
