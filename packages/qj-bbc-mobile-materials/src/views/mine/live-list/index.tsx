@@ -6,7 +6,7 @@ import {useLiveList} from 'qj-bbc-mobile-store'
 
 const liveListJsx: React.FC = () => {
   const {View, ScrollView} = useComponent();
-  const {onScroll, list} = useLiveList();
+  const {onScroll, list, goLive} = useLiveList();
 
   return (
     <View className={'live-list'}>
@@ -15,7 +15,7 @@ const liveListJsx: React.FC = () => {
       >
         {
           list.map((item: any, index: number) => {
-            return <LiveItem key={index} item={item} />
+            return <LiveItem key={index} item={item} goLive={goLive} />
           })
         }
       </ScrollView>

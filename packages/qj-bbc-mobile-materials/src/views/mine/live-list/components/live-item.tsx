@@ -1,15 +1,22 @@
 import React, {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
+import dayjs from "dayjs";
 
-const liveItemJsx:React.FC<any> = ({item}) => {
+const liveItemJsx:React.FC<any> = ({item, goLive}) => {
   const {View, Image} = useComponent();
+
+  const {infuencerName, infuencerInfname, gmtCreate, infuencerStart, infuencerEnd, dataState, infuencerId} = item;
+
+  console.log(7, item);
 
   const handleType = (type: number) => {
     switch (type) {
-      case 1:
+      case 102:
         return <View className={'red'}>未开始</View>;
-      case 2:
+      case 107:
         return <View className={'grey'}>已过期</View>
+      case 103:
+        return <View className={'grey'}>已结束</View>
       case 3:
         return <View className={'blue'}>直播中</View>
       default:
@@ -18,7 +25,7 @@ const liveItemJsx:React.FC<any> = ({item}) => {
   }
 
   return (
-    <View className={'live-list-item'}>
+    <View className={'live-list-item'} onClick={goLive.bind(null, infuencerId)}>
 
       <View className={'main-info'}>
         <View className={'l-part'}>
@@ -27,23 +34,23 @@ const liveItemJsx:React.FC<any> = ({item}) => {
             mode='widthFix'
             className='icon'
           />
-          <View className={'title'}>2023直播间</View>
+          <View className={'title'}>{infuencerName}</View>
         </View>
         <View className={'r-part'}>
           {
-            handleType(1)
+            handleType(dataState)
           }
         </View>
       </View>
 
       <View className={'sub-info'}>
-        <View className={'sub-info-line'}>直播开始时间：123123213</View>
-        <View>直播结束时间：123123213</View>
+        <View className={'sub-info-line'}>直播开始时间：{dayjs(infuencerStart).format('YYYY-MM-DD HH:mm:ss')}</View>
+        <View>直播结束时间：{dayjs(infuencerEnd).format('YYYY-MM-DD HH:mm:ss')}</View>
       </View>
 
       <View className={'sub-info'}>
-        <View className={'sub-info-line'}>主播名称：123123213</View>
-        <View>创建时间：123123213</View>
+        <View className={'sub-info-line'}>主播名称：{infuencerInfname}</View>
+        <View>创建时间：{dayjs(gmtCreate).format('YYYY-MM-DD HH:mm:ss')}</View>
       </View>
     </View>
   )

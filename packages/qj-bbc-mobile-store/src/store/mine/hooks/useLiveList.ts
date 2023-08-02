@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {useImmutableCallback} from "@brushes/utils";
+import {useImmutableCallback, getTaro} from "@brushes/utils";
 import {queryInfuencerAndChild} from "qj-bbc-api";
 import {isEmpty} from "lodash-es";
 
@@ -50,10 +50,21 @@ export const useLiveList = () => {
     }
   });
 
+  const goLive = (liveId: number) => {
+    const Taro = getTaro();
+    Taro.navigateToMiniProgram({
+      appId: 'wx87e3475cf4b2fdb1',
+      path: 'pages/home/index',
+      extraData: {liveId}
+    })
+    console.log(60, liveId)
+  }
+
 
   return {
     list,
     loading,
-    onScroll
+    onScroll,
+    goLive
   }
 }

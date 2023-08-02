@@ -47,10 +47,15 @@ export const useLogin = () => {
     jumpLink(routerMap.accountLogin);
   }
 
+  const goChangePwd = () => {
+    jumpLink(routerMap.changePwd);
+  }
+
   return {
     form,
     onFinish,
     goMobileLogin,
-    goAccountLogin
+    goAccountLogin,
+    goChangePwd
   }
 }

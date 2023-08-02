@@ -8,7 +8,7 @@ const formAccountLoginJsx:React.FC = () => {
   const {View} = useComponent();
   const {Form} = antdMobile;
 
-  const {form, onFinish} = useLogin()
+  const {form, onFinish} = useLogin();
 
   return (
     <View className={'accountForm'}>

@@ -8,3 +8,4 @@ export * from './useCode';
 export * from './useLogin';
 export * from './useApply';
 export * from './useApplyProgress';
+export * from './useChangePwd';

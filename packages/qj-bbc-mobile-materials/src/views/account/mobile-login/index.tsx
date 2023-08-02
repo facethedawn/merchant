@@ -5,7 +5,7 @@ import {useLogin} from 'qj-bbc-mobile-store';
 
 const mobileLoginJsx = () => {
   const {View} = useComponent();
-  const {goAccountLogin} = useLogin();
+  const {goAccountLogin, goChangePwd} = useLogin();
 
   return (
     <View>
@@ -13,6 +13,7 @@ const mobileLoginJsx = () => {
       <FormMobileLogin/>
       <View className='linkWrap'>
         <View className='linkWord' onClick={goAccountLogin}>去账号密码登录</View>
+        <View className='linkWord' onClick={goChangePwd}>忘记密码？</View>
       </View>
     </View>
   )

@@ -6,3 +6,4 @@ export * from './form-reg';
 export * from './form-mobile-login';
 export * from './form-account-login';
 export * from './form-apply';
+export * from './code-item/codeItem';

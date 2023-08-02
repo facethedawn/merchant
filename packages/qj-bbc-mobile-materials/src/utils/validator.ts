@@ -9,8 +9,8 @@ export const checkMobile = (_: any, value: string) => {
 export const mobileRex = /^1[13456789]\d{9}$/;
 
 export const checkPwd = (_: any, value: any) => {
-  if (value.length > 5 && value.length < 13) {
+  if (value.length > 7 && value.length < 19) {
     return Promise.resolve()
   }
-  return Promise.reject(new Error(`请输入6-12位密码`));
+  return Promise.reject(new Error(`请输入8-18位密码`));
 }
