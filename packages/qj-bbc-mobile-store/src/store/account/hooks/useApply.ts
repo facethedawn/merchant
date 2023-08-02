@@ -1,11 +1,18 @@
 // @ts-nocheck
 
-import {queryClasstreePage, queryBrandPage, queryProvincePage, queryAreaPage, saveUpdateUserinfoapply} from 'qj-bbc-api';
+import {
+  queryClasstreePage,
+  queryBrandPage,
+  queryProvincePage,
+  queryAreaPage,
+  saveUpdateUserinfoapply
+} from 'qj-bbc-api';
 import {useCallback, useEffect, useState} from "react";
 import {isNull, isEmpty, get} from "lodash-es";
 import {Form} from 'antd-mobile';
 import {getTaro, getBaseUrl, taroMessage} from "@brushes/utils";
 import {jumpLink} from "../../../utils";
+import {routerMap} from "../../../router-map";
 
 const baseUrl = getBaseUrl();
 
@@ -41,8 +48,6 @@ export const useApply = () => {
     try {
       const result = await queryProvincePage();
       setProvinceList(result.list)
-
-      console.log(43, result.list)
     } catch (err) {
       console.log(err)
     }
@@ -84,7 +89,6 @@ export const useApply = () => {
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res: any) {
-        console.log('img', res);
         Taro.uploadFile({
           url: `${baseUrl}web/rs/goodsFile/uploadGoodsFiles.json`, //仅为示例，非真实的接口地址
           filePath: res.tempFilePaths[0],
@@ -95,7 +99,6 @@ export const useApply = () => {
           },
           success(res: any) {
             const response = JSON.parse(res.data);
-            console.log(64, response);
             const resultImg = baseUrl + response.fileUrl;
             switch (type) {
               case 'logo':
@@ -200,7 +203,6 @@ export const useApply = () => {
       try {
         const result = await queryAreaPage({provinceCode});
         setCityList(result.list);
-        console.log(199, result.list);
       } catch (err) {
         console.log(err)
       }
@@ -246,12 +248,6 @@ export const useApply = () => {
 
   const onFinish = async (formVal: any) => {
 
-    console.log(248,
-      provinceList[provinceCoe],
-      cityList[cityCoe],
-      areaList[areaCoe]
-      )
-
     const {
       userinfoCompname,
       companyShortname,
@@ -267,10 +263,7 @@ export const useApply = () => {
     const resultObj = {
       userinfoCode: Taro.getStorageSync('userInfoCode'),
       userinfoCompname,
-      companyShortname,
       userinfoType: 2,
-      userinfoCertNo,
-      companyAddress,
       userinfoCertUrl: license ? getPath(license) : '',
       provinceCode: provinceList[provinceCoe].provinceCode,
       provinceName: provinceList[provinceCoe].provincName,
@@ -283,25 +276,51 @@ export const useApply = () => {
 
     const arr = resultObj.umUserinfoapplyQuaList
 
-    for(let i=0; i<brand.length; i++) {
+    for (let i = 0; i < brand.length; i++) {
       arr.push({
-        userinfoapplyQuaKey:"userinfoQua_brandCode",
-        userinfoapplyQuaVaule:brandList[i]['code'],
-        userinfoapplyQuaVaule1:"brandName",
-        userinfoapplyQuaVaule2:brandList[i]['name']
+        userinfoapplyQuaKey: "userinfoQua_brandCode",
+        userinfoapplyQuaVaule: brandList[i]['code'],
+        userinfoapplyQuaVaule1: "brandName",
+        userinfoapplyQuaVaule2: brandList[i]['name']
       })
     }
 
-    for(let i=0; i<classify.length; i++) {
+    for (let i = 0; i < classify.length; i++) {
       arr.push({
-        userinfoapplyQuaKey:"userinfoQua_classtreeCode",
-        userinfoapplyQuaVaule:classifyList[i]['code'],
-        userinfoapplyQuaVaule1:"classtreeName",
-        userinfoapplyQuaVaule2:classifyList[i]['name']
+        userinfoapplyQuaKey: "userinfoQua_classtreeCode",
+        userinfoapplyQuaVaule: classifyList[i]['code'],
+        userinfoapplyQuaVaule1: "classtreeName",
+        userinfoapplyQuaVaule2: classifyList[i]['name']
+      })
+    }
+
+    if (companyAddress) {
+      arr.push({
+        userinfoapplyQuaKey: 'userinfo_companyAddress',
+        userinfoapplyQuaVaule: companyAddress,
+        userinfoapplyQuaVaule1: 'companyAddress',
+        userinfoapplyQuaVaule2: '营业执照地址'
       })
     }
 
 
+    if (companyShortname) {
+      arr.push({
+        userinfoapplyQuaKey: 'userinfo_companyShortname',
+        userinfoapplyQuaVaule: companyShortname,
+        userinfoapplyQuaVaule1: 'companyShortname',
+        userinfoapplyQuaVaule2: '商家简称'
+      })
+    }
+
+    if (userinfoCertNo) {
+      arr.push({
+        userinfoapplyQuaKey: 'userinfo_userinfoCertNo',
+        userinfoapplyQuaVaule: userinfoCertNo,
+        userinfoapplyQuaVaule1: 'userinfoCertNo',
+        userinfoapplyQuaVaule2: '营业执照编号'
+      })
+    }
 
 
     if (logo) {
@@ -314,6 +333,18 @@ export const useApply = () => {
         }
       )
     }
+
+    if (license) {
+      arr.push(
+        {
+          userinfoapplyQuaKey: 'userinfo_userinfoCertUrl',
+          userinfoapplyQuaVaule: getPath(license),
+          userinfoapplyQuaVaule1: 'userinfoCertUrl',
+          userinfoapplyQuaVaule2: '营业执照地址'
+        }
+      )
+    }
+
 
     if (userinfoScope) {
       arr.push(
@@ -329,7 +360,7 @@ export const useApply = () => {
     if (startTime) {
       arr.push(
         {
-          userinfoapplyQuaKey: 'userinfo_shopdeSdate',
+          userinfoapplyQuaKey: 'userinfoQua_shopdeSdate',
           userinfoapplyQuaVaule: startTime,
           userinfoapplyQuaVaule1: 'shopdeSdate',
           userinfoapplyQuaVaule2: "营业开始时间"
@@ -340,7 +371,7 @@ export const useApply = () => {
     if (endTime) {
       arr.push(
         {
-          userinfoapplyQuaKey: 'userinfo_shopdeEdate',
+          userinfoapplyQuaKey: 'userinfoQua_shopdeEdate',
           userinfoapplyQuaVaule: endTime,
           userinfoapplyQuaVaule1: 'shopdeEdate',
           userinfoapplyQuaVaule2: '营业截止时间'
@@ -370,7 +401,7 @@ export const useApply = () => {
 
     if (userinfoConEmail) {
       arr.push({
-        userinfoapplyQuaKey: 'userinfo_userinfoConEmail',
+        userinfoapplyQuaKey: 'userinfoQua_userinfoConEmail',
         userinfoapplyQuaVaule: userinfoConEmail,
         userinfoapplyQuaVaule1: 'userinfoConEmail',
         userinfoapplyQuaVaule2: '联系人邮箱'
@@ -379,12 +410,15 @@ export const useApply = () => {
 
     if (servicePhone) {
       arr.push({
-        userinfoapplyQuaKey: 'userinfo_servicePhone',
+        userinfoapplyQuaKey: 'userinfoQua_servicePhone',
         userinfoapplyQuaVaule: servicePhone,
         userinfoapplyQuaVaule1: 'servicePhone',
         userinfoapplyQuaVaule2: '客服电话'
       })
     }
+
+    console.log(389, resultObj)
+
 
     try {
       await saveUpdateUserinfoapply({
@@ -392,9 +426,11 @@ export const useApply = () => {
       })
       taroMessage('提交成功');
 
-      jumpLink()
+      setTimeout(() => {
+        jumpLink(routerMap.applyProgress)
+      }, 2000);
 
-    }catch (err) {
+    } catch (err) {
       console.log(err);
     }
 

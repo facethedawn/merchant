@@ -10,7 +10,7 @@ const regJsx = () => {
   const {changeLockForm, lockForm} = useAccountForm();
   return (
     <View>
-      <AccountTitle title={'注册'}/>
+      <AccountTitle title={''}/>
       <FormReg lockForm={lockForm} />
       <AccountAgreement config={config} changeLockForm={changeLockForm} lockForm={lockForm}/>
     </View>

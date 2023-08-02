@@ -59,7 +59,7 @@ const applySettleJsx: React.FC = () => {
         areaCoe
       }}
     >
-      <AccountTitle title={'申请入驻'}/>
+      <AccountTitle title={''}/>
       <FormApply />
     </applyContext.Provider>
   )

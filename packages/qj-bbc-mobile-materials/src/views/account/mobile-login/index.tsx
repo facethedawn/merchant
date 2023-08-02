@@ -9,7 +9,7 @@ const mobileLoginJsx = () => {
 
   return (
     <View>
-      <AccountTitle title={'验证码登录'}/>
+      <AccountTitle title={''}/>
       <FormMobileLogin/>
       <View className='linkWrap'>
         <View className='linkWord' onClick={goAccountLogin}>去账号密码登录</View>

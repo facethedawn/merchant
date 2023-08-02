@@ -1,8 +1,8 @@
 export default defineAppConfig({
   pages: [
     'pages/goods-list/index',
-    'account/apply-progress/index',
     'account/apply/index',
+    'account/apply-progress/index',
     'pages/live-list/index',
     'pages/brokerage-list/index',
     'pages/order-list/index',

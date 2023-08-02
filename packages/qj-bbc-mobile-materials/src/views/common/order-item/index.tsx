@@ -38,7 +38,6 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handl
           return ''
       }
     }
-
   }
 
   const {
