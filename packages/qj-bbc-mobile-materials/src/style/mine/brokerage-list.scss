@@ -31,6 +31,95 @@
   }
 
   .merchant-rules {
+    .merchant-rules-item {
+      margin-top: 10px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 16px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
+      .l-part {
+        font-size: 12px;
+        color: $font-color;
+      }
+
+      .r-part {
+        font-size: 12px;
+        color: $font-sub-color;
+      }
+
+    }
+  }
+
+  .classify-rules {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 16px;
+
+    .classify-rules-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.l-part {
+        color: $font-color
+      }
+
+      &.r-part {
+        color: $font-sub-color
+      }
+    }
+  }
+
+
+  .goods-rules {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 16px;
+    box-sizing: border-box;
+
+    .goods-rules-item {
+      display: flex;
+      padding-bottom: 16px;
+      padding-top: 16px;
+      border-bottom: 1px solid #EAEAEA;
+      &:last-child {
+        border: 0 none;
+      }
+
+      .img {
+        width: 60px;
+        height: 60px;
+        margin-right: 16px;
+      }
+
+      .goods-info {
+        flex: 1;
+
+        .title {
+          font-size: 14px;
+          color: $font-color;
+          margin-top: 4px;
+          margin-bottom: 14px;
+        }
+
+        .rules-info {
+          display: flex;
+          justify-content: space-between;
+          font-size: 12px;
+          color: $font-sub-color;
+        }
+      }
+    }
   }
 }

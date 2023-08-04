@@ -24,6 +24,7 @@ const MERCHANT = {
   QUERY_USER_INFO_DETAIL: '/web/um/userserviceinfo/queryUserinfoDetail.json', // 商户详细信息
   QUERY_INFUENCER_AND_CHILD: '/web/inf/infuencer/queryInfuencerAndChild.json', // 直播列表
   D_PRICE_CONF_TYPE: '/web/pte/dpriceConf/queryDpriceConfPageForMerchant.json', //佣金-商家规则
+  QUERY_D_PRICE_CONF_PAGE: '/web/pte/dpriceConf/queryDpriceConfPage.json', //佣金-分类规则
   QUERY_PROVINCE_PAGE: '/web/bs/province/queryProvincePage.json', // 获取省code
   QUERY_AREA_PAGE: '/web/bs/area/queryAreaPage.json', // 获取市code
   QUERY_ROAD_PAGE: '/web/bs/road/queryRoadPage.json', //获取区code
@@ -37,6 +38,8 @@ const MERCHANT = {
   GET_SETS_UP_DIS_UTIL: '/web/pm/promotion/getSetsupDisUtil.json', // 获取太阳码第一步
   LOGIN_MINI_CODE_BY_TWO_BUS: '/web/ml/mlogin/loginMiniCodeByTwoBus.json', // 获取太阳码第二步
 }
+
+export const queryDpriceConfPage = (params = {}) => post(MERCHANT.QUERY_D_PRICE_CONF_PAGE, params);
 
 export const loginMiniCodeByTwoBus = (params = {}) => post(MERCHANT.LOGIN_MINI_CODE_BY_TWO_BUS, params);
 

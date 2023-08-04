@@ -4,7 +4,7 @@ import {CommonTab} from "../../common";
 import {config} from './config';
 // import {BrokerageCommonList, ClassifyRules, GoodsRules, MerchantRules} from "./components";
 import {useBrokerageList} from "qj-bbc-mobile-store";
-import {MerchantRules} from "./components";
+import {ClassifyRules, GoodsRules, MerchantRules} from "./components";
 
 const brokerageListJsx = () => {
   const {View} = useComponent();
@@ -17,6 +17,14 @@ const brokerageListJsx = () => {
 
       {
         coe === 0 ? <MerchantRules/> : null
+      }
+
+      {
+        coe === 1?<ClassifyRules/>: null
+      }
+
+      {
+        coe === 2?<GoodsRules/>: null
       }
 
 

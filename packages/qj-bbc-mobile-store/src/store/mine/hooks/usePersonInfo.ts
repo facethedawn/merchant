@@ -74,9 +74,21 @@ export const usePersonInfo = () => {
     }
   }
 
+  const handleStupidArr2 = (arr: any, target: string) => {
+    const result = []
+    for (let i in arr) {
+      if(arr[i]['userinfoQuaVaule1'] === target) {
+        result.push(arr[i]['userinfoQuaVaule2'])
+
+      }
+    }
+    return result.join(', ')
+  }
+
 
   return {
     info,
-    handleStupidArr
+    handleStupidArr,
+    handleStupidArr2
   }
 }

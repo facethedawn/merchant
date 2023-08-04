@@ -3,7 +3,10 @@ import {queryDpriceConfPageForMerchant} from "qj-bbc-api";
 
 
 export const useMerchantRules = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState([{
+    dataState: 0,
+    dpriceConfPrice: 0
+  }]);
 
   useEffect(() => {
     getList();
@@ -14,9 +17,7 @@ export const useMerchantRules = () => {
       const result = await queryDpriceConfPageForMerchant({
         dpriceConfType: 'memberCcode'
       })
-
-      console.log(result);
-      setList([])
+      setList(result.list)
     }catch (err) {
       console.log(err);
     }

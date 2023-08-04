@@ -7,11 +7,15 @@ const merchantRulesJsx: React.FC = () => {
 
   const {list} = useMerchantRules();
 
-  console.log(10, list);
+  const {dataState, dpriceConfPrice} = list[0];
+
 
   return (
     <View className={'merchant-rules'}>
-      商家规则
+      <View className={'merchant-rules-item'}>
+        <View className={'l-part'}>商家结算比例</View>
+        <View className={'r-part'}>{dpriceConfPrice}{dataState === 1 ? '元' : '%'}</View>
+      </View>
     </View>
   )
 }
