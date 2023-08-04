@@ -10,6 +10,13 @@
   align-items: center;
   justify-content: center;
 
+  &.hide {
+    z-index: -1;
+  }
+  &.show {
+    z-index: 999;
+  }
+
   .share-content {
     width: 280PX;
 
@@ -29,12 +36,13 @@
       .dashboard-item {
         flex: 1;
         text-align: center;
+        height: 100%;
 
         .icon {
           width: 44PX;
           height: 44PX;
           display: block;
-          margin: 16px auto 8px;
+          margin: 0 auto 4PX;
         }
 
         .txt {

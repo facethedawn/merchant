@@ -34,7 +34,13 @@ const MERCHANT = {
   REFUSE_APPLICATION: '/web/oc/refund/refuseApplication.json', // 售后-审核拒绝
   UPDATE_UM_USER_PW: '/web/ml/muser/updateUmuserPw.json', // 修改密码
   UPDATE_CONTRACT_STATE_BUI_MAT: '/web/oc/contract/updateContractStateBuiMat.json', // 取消订单
+  GET_SETS_UP_DIS_UTIL: '/web/pm/promotion/getSetsupDisUtil.json', // 获取太阳码第一步
+  LOGIN_MINI_CODE_BY_TWO_BUS: '/web/ml/mlogin/loginMiniCodeByTwoBus.json', // 获取太阳码第二步
 }
+
+export const loginMiniCodeByTwoBus = (params = {}) => post(MERCHANT.LOGIN_MINI_CODE_BY_TWO_BUS, params);
+
+export const getSetsupDisUtil = (params = {}) => post(MERCHANT.GET_SETS_UP_DIS_UTIL, params);
 
 export const updateContractStateBuiMat = (params = {}) => post(MERCHANT.UPDATE_CONTRACT_STATE_BUI_MAT, params);
 

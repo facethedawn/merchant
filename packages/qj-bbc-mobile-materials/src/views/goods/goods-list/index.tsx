@@ -37,13 +37,17 @@ const goodsListJsx: React.FC = () => {
     goGoodsSearch,
     handleChangeSearchContent,
     price,
-    changePrice
-  } = useGoodsList({param: '', refreshNum:1, config });
+    changePrice,
+    shareShow,
+    setShareShow,
+    handleShareShow
+  } = useGoodsList({param: '', refreshNum: 1, config});
 
   return (
     <View className={'goods-list'} id={'a'}>
       <SearchTopWrap>
-        <Search config={config} changeSearchType={changeSearchType} value={chooseSearchTypeIndex} onFinish={goGoodsSearch} onChange={handleChangeSearchContent} />
+        <Search config={config} changeSearchType={changeSearchType} value={chooseSearchTypeIndex}
+                onFinish={goGoodsSearch} onChange={handleChangeSearchContent}/>
       </SearchTopWrap>
       <View
         className={'goods-list-content'}
@@ -56,31 +60,34 @@ const goodsListJsx: React.FC = () => {
           chosenClassifyIndex={chosenClassifyIndex}
           setChosenClassifyIndex={setChosenClassifyIndex}
         />
-          <SideContent
-            list={list}
-            all={all}
-            popupShow={popupShow}
-            setPopupShow={setPopupShow}
-            handlePopupBtn={handlePopupBtn}
-            chooseItem={chooseItem}
-            setChooseItem={setChooseItem}
-            loading={loading}
-            handleUpDown={handleUpDown}
-            filterPopupShow={filterPopupShow}
-            setFilterPopupShow={setFilterPopupShow}
-            upDownState={upDownState}
-            setUpDownState={setUpDownState}
-            resetState={resetState}
-            filterSubmit={filterSubmit}
-            onScroll={onScroll}
-            inventory={inventory}
-            setInventoryMin={setInventoryMin}
-            setInventoryMax={setInventoryMax}
-            changeGoodsInfoSubmit={changeGoodsInfoSubmit}
-            changeInventory={changeInventory}
-            price={price}
-            changePrice={changePrice}
-          />
+        <SideContent
+          list={list}
+          all={all}
+          popupShow={popupShow}
+          setPopupShow={setPopupShow}
+          handlePopupBtn={handlePopupBtn}
+          chooseItem={chooseItem}
+          setChooseItem={setChooseItem}
+          loading={loading}
+          handleUpDown={handleUpDown}
+          filterPopupShow={filterPopupShow}
+          setFilterPopupShow={setFilterPopupShow}
+          upDownState={upDownState}
+          setUpDownState={setUpDownState}
+          resetState={resetState}
+          filterSubmit={filterSubmit}
+          onScroll={onScroll}
+          inventory={inventory}
+          setInventoryMin={setInventoryMin}
+          setInventoryMax={setInventoryMax}
+          changeGoodsInfoSubmit={changeGoodsInfoSubmit}
+          changeInventory={changeInventory}
+          price={price}
+          changePrice={changePrice}
+          shareShow={shareShow}
+          setShareShow={setShareShow}
+          handleShareShow={handleShareShow}
+        />
       </View>
     </View>
   )

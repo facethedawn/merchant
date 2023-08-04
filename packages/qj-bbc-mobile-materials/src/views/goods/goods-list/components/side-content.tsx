@@ -4,6 +4,7 @@ import {GoodsItem} from "../../../common";
 import {GoodsPopupContent} from "./goods-popup-content";
 import {GoodsPopupFilter} from "./goods-popup-filter";
 import {ScrollView} from '@tarojs/components';
+import {Share} from "./share";
 
 
 const sideContentJsx: React.FC<any> = (
@@ -30,7 +31,10 @@ const sideContentJsx: React.FC<any> = (
     changeInventory,
     loading,
     changePrice,
-    price
+    price,
+    shareShow,
+    setShareShow,
+    handleShareShow
   }) => {
 
   const {View, Image, WrapLoading} = useComponent();
@@ -64,6 +68,7 @@ const sideContentJsx: React.FC<any> = (
                     setChooseItem={setChooseItem}
                     handlePopupBtn={handlePopupBtn}
                     handleUpDown={handleUpDown}
+                    handleShareShow={handleShareShow}
                   />
                 })
               }
@@ -91,6 +96,9 @@ const sideContentJsx: React.FC<any> = (
         resetState={resetState}
         filterSubmit={filterSubmit}
       />
+      {
+        shareShow?<Share item={chooseItem} setShareShow={setShareShow} />: null
+      }
     </View>
   )
 }

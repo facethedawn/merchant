@@ -5,9 +5,9 @@ import dayjs from "dayjs";
 const liveItemJsx:React.FC<any> = ({item, goLive}) => {
   const {View, Image} = useComponent();
 
-  const {infuencerName, infuencerInfname, gmtCreate, infuencerStart, infuencerEnd, dataState, infuencerId} = item;
+  const {infuencerName, infuencerInfname, gmtCreate, infuencerStart, infuencerEnd, dataState, infuencerEcode} = item;
 
-  console.log(7, item);
+  console.log(7, infuencerEcode);
 
   const handleType = (type: number) => {
     switch (type) {
@@ -17,7 +17,7 @@ const liveItemJsx:React.FC<any> = ({item, goLive}) => {
         return <View className={'grey'}>已过期</View>
       case 103:
         return <View className={'grey'}>已结束</View>
-      case 3:
+      case 106:
         return <View className={'blue'}>直播中</View>
       default:
         return ''
@@ -25,7 +25,7 @@ const liveItemJsx:React.FC<any> = ({item, goLive}) => {
   }
 
   return (
-    <View className={'live-list-item'} onClick={goLive.bind(null, infuencerId)}>
+    <View className={'live-list-item'} onClick={goLive.bind(null, infuencerEcode)}>
 
       <View className={'main-info'}>
         <View className={'l-part'}>

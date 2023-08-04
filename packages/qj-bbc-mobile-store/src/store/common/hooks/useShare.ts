@@ -1,27 +1,23 @@
 // @ts-nocheck
-
+import {useEffect, useRef, useState} from "react";
+import {getSetsupDisUtil, loginMiniCodeByTwoBus} from 'qj-bbc-api';
 import {getTaro} from "@brushes/utils";
-import {useEffect, useRef} from "react";
+import {get} from 'lodash-es';
+import {getHost} from '../../../utils';
 
 
-
-export const useShare = () => {
-
-  const posterBgImage = useRef('https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/share-bg.png');
-
-  const goodImg = useRef('https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/share.png');
-
+export const useShare = ({item}) => {
+  const {skuNo, goodsType, memberCode, goodsName, dataPic} = item;
+  const Taro = getTaro();
+  const [shareShow, setShareShow] = useState(false);
   const saveImage = useRef('');
 
   useEffect(() => {
-    init();
-
-  }, []);
-
+    init()
+  }, [item]);
 
   // 把图片保存到系统中
   const savePictureSystem = () => {
-    const Taro = getTaro();
     Taro.saveImageToPhotosAlbum({
       filePath: saveImage.current,
       success(res) {
@@ -39,11 +35,9 @@ export const useShare = () => {
     })
   }
 
+
   // 保存到相册
   const save = () => {
-
-    console.log(46)
-    const Taro = getTaro();
     Taro.getSetting({
       success(res) {
         // 如果没有授权过，则要获取授权
@@ -86,10 +80,12 @@ export const useShare = () => {
     })
   }
 
-
   const init = async () => {
-    const Taro = getTaro();
+    const baseImg = await getSun();
     const ctx = Taro.createCanvasContext('canvas');
+    Taro.showLoading({
+      title: '生成中...'
+    })
 
     const bg = await Taro.getImageInfo({
       src: 'https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/share-bg.png',
@@ -99,30 +95,29 @@ export const useShare = () => {
     ctx.fillRect(21, 21, 238, 342);
 
     const goodsImg = await Taro.getImageInfo({
-      src: 'https://nebular.oss-cn-shanghai.aliyuncs.com/BBC/merchant/mobile/img/share.png',
+      src: `${getHost()}${dataPic}`,
     })
-
     ctx.drawImage(goodsImg.path, 21, 32, 238, 227);
+
+
+    await draw(baseImg, ctx)
 
     ctx.setFontSize(14);
     ctx.setFillStyle('#1C253A');
-    ctx.fillText('商品标题', 117, 289);
+    ctx.fillText(goodsName, 117, 289);
 
     ctx.setFontSize(11);
     ctx.setFillStyle('#888E9B');
     ctx.fillText('长按识别小程序 立即购买', 117, 318);
 
-    ctx.draw();
-
-    setTimeout(() => {
+    ctx.draw(() => {
       Taro.canvasToTempFilePath({
-        x:0,
-        y:0,
+        x: 0,
+        y: 0,
         width: 280,
         height: 384,
         canvasId: 'canvas',
         success: (result) => {
-          console.log(77, result)
           saveImage.current = result.tempFilePath;
           // SetImage(result.tempFilePath)
         },
@@ -130,18 +125,58 @@ export const useShare = () => {
           Taro.showToast('图片生成失败！')
         }
       })
-    }, 600)
+    });
+
+    Taro.hideLoading();
+    setShareShow(true);
 
 
-
-    // ctx.stroke()
-    // ctx.draw()
 
 
   }
+  const getSun = async () => {
+    try {
+      const scene = await getSetsupDisUtil({
+        value: `${skuNo}_${goodsType}_${memberCode}`
+      })
 
+      const result = await loginMiniCodeByTwoBus({
+        page: 'pages/detail/main',
+        scene,
+        mode: 0,
+        width: 120,
+        fchannelCode: 'wechatmini',
+        memberBcode: memberCode
+      })
+
+      return  `${get(result, 'dataObj.dataObj')}`
+
+      // console.log(29, 'data:image/png;base64,'+sun.current);
+
+    }catch (err) {
+      console.log(err)
+    }
+  }
+
+  function draw(baseImg: string, context: any) {
+    return new Promise((resolve, reject) => {
+      const fs = Taro.getFileSystemManager();
+      const codeimg = Taro.env.USER_DATA_PATH + '/' + '.jpg';
+      fs.writeFile({
+        filePath: codeimg,
+        data: baseImg, // code就是接口返回的base64数据(分割掉前面的data:image/png;base64,)
+        encoding: 'base64',
+        success: () => {
+          // console.log(codeimg);
+          context.drawImage(codeimg, 30, 274, 72, 72)
+          resolve()
+        }
+      })
+    })
+  }
 
   return {
-    save
+    save,
+    shareShow
   }
 }

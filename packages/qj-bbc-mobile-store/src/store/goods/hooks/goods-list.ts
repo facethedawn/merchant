@@ -60,6 +60,8 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
 
   const [searchContent, setSearchContent] = useState('');
 
+  const [shareShow, setShareShow] = useState(false);
+
 
 
   useEffect(() => {
@@ -215,6 +217,11 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
     init();
   }
 
+  const handleShareShow = (item:any) => {
+    setShareShow(true);
+    setChooseItem(item)
+  }
+
 
   return {
     onScroll,
@@ -248,5 +255,8 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
     handleChangeSearchContent,
     price,
     changePrice,
+    shareShow,
+    setShareShow,
+    handleShareShow
   }
 }

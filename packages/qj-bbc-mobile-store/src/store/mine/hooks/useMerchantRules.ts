@@ -22,7 +22,6 @@ export const useMerchantRules = () => {
     }
   }
 
-
   return {
     list
   }

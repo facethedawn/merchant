@@ -20,8 +20,6 @@ const goodsPopupContentJsx:React.FC<any> = (
   const {View, Popup, Image, Input} = useComponent();
   const {goodsName, dataPic, goodsShowno, goodsNum, pricesetNprice, skuName} = chooseItem
 
-
-
   return (
     <Popup popupVisible={popupShow} popupHandler={() => {setPopupShow(false)}}>
       <View className={'goods-list-popup'}>
