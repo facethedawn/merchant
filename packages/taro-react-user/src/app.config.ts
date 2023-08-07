@@ -23,28 +23,30 @@ export default defineAppConfig({
     'account/agreement/index',
   ],
   tabBar: {
+    color: '#888E9B',
+    selectedColor: '#1C253A',
     list: [
       {
         pagePath: "pages/goods-list/index",
-        text: "",
+        text: "商品",
         iconPath: "img/tab-icon1-1.png",
-        selectedIconPath: "img/tab-icon1-2.png"
+        selectedIconPath: "img/tab-icon1-2.png",
       },
       {
         pagePath: "pages/order-list/index",
-        text: "",
+        text: "订单",
         iconPath: "img/tab-icon2-1.png",
         selectedIconPath: "img/tab-icon2-2.png"
       },
       {
         pagePath: "pages/return-order-list/index",
-        text: "",
+        text: "退单",
         iconPath: "img/tab-icon3-1.png",
         selectedIconPath: "img/tab-icon3-2.png"
       },
       {
         pagePath: "pages/mine/index",
-        text: "",
+        text: "我的",
         iconPath: "img/tab-icon4-1.png",
         selectedIconPath: "img/tab-icon4-2.png"
       }

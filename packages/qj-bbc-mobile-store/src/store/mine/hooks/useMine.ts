@@ -6,7 +6,7 @@ import {jumpLink} from "../../../utils";
 import {routerMap} from "../../../router-map";
 
 
-export const useMine = () => {
+export const useMine = ({refreshNum = 0}) => {
 
   const [merchantInfo, setMerchantInfo] = useState({
     userinfoCompname: '',
@@ -15,8 +15,9 @@ export const useMine = () => {
 
 
   useEffect(() => {
+    console.log(18, refreshNum)
     init();
-  }, [])
+  }, [refreshNum])
 
 
   const init = async () => {
@@ -33,6 +34,7 @@ export const useMine = () => {
         const info = await getUserserviceInfo({
           userId: dataObj.userId
         })
+        console.log(36, info)
         setMerchantInfo(info);
       }catch (err) {
         console.log(err)
@@ -42,8 +44,12 @@ export const useMine = () => {
 
   const logOut = () => {
     const Taro = getTaro();
+    setMerchantInfo({
+      userinfoCompname: '',
+      userinfoLogo: ''
+    })
     Taro.removeStorageSync('saas-token');
-    console.log(36, routerMap.goodList)
+    Taro.removeStorageSync('userInfoCode');
     jumpLink(routerMap.auth);
   }
 

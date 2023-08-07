@@ -2,7 +2,7 @@
 import { errorCallback } from '@brushes/request'
 import {Form} from 'antd-mobile';
 import {warrantyMerchantLogin, queryUserApplyPage} from 'qj-bbc-api';
-import {getTaro} from '@brushes/utils';
+import {getTaro, getPagesRefreshStore, updatePagesRefreshStore} from '@brushes/utils';
 import {routerMap} from '../../../router-map';
 import {jumpLink, checkApply} from "../../../utils";
 import {stackLength} from './useAccountForm';
@@ -28,6 +28,11 @@ export const useLogin = () => {
           Taro.setStorageSync('userInfoCode', userInfoCode);
 
           checkApply();
+
+          let { mineNum = 0 } = getPagesRefreshStore();
+          updatePagesRefreshStore({
+            mineNum: ++mineNum
+          });
 
         } catch (err) {
           console.log(err)

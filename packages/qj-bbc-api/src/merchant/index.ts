@@ -37,7 +37,10 @@ const MERCHANT = {
   UPDATE_CONTRACT_STATE_BUI_MAT: '/web/oc/contract/updateContractStateBuiMat.json', // 取消订单
   GET_SETS_UP_DIS_UTIL: '/web/pm/promotion/getSetsupDisUtil.json', // 获取太阳码第一步
   LOGIN_MINI_CODE_BY_TWO_BUS: '/web/ml/mlogin/loginMiniCodeByTwoBus.json', // 获取太阳码第二步
+  GET_RO_APP_CONFIG_PAGE_FOR_USER: '/web/tm/Proapp/getroappConfigPageForUser.json', // 获取协议
 }
+
+export const getroappConfigPageForUser = (params = {}) => post(MERCHANT.GET_RO_APP_CONFIG_PAGE_FOR_USER, params);
 
 export const queryDpriceConfPage = (params = {}) => post(MERCHANT.QUERY_D_PRICE_CONF_PAGE, params);
 

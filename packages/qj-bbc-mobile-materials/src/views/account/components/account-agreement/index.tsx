@@ -4,7 +4,7 @@ import {useAgreement} from 'qj-bbc-mobile-store';
 
 interface configItem {
   label: string,
-  params: string
+  params: any
 }
 
 interface accountAgreementType {
@@ -29,7 +29,7 @@ const accountAgreementJsx: React.FC<accountAgreementType> = ({config,changeLockF
             <View key={index}>
               <View
                 className={'agreement'}
-                onClick={goAgreement}>《{item.label}》</View>{index === config.length - 1 ? '' : '和'}
+                onClick={goAgreement.bind(null, item.params)}>《{item.label}》</View>{index === config.length - 1 ? '' : '和'}
             </View>
           )
         })

@@ -13,7 +13,7 @@ const merchantRulesJsx: React.FC = () => {
   return (
     <View className={'merchant-rules'}>
       <View className={'merchant-rules-item'}>
-        <View className={'l-part'}>商家结算比例</View>
+        <View className={'l-part'}>抽佣比例/固定金额</View>
         <View className={'r-part'}>{dpriceConfPrice}{dataState === 1 ? '元' : '%'}</View>
       </View>
     </View>
