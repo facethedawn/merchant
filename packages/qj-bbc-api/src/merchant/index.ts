@@ -21,6 +21,7 @@ const MERCHANT = {
   QUERY_BY_MEMBER_C_CODE_MERCHANT: '/web/oc/refund/queryByMemberCcodeMerchant.json', //退单列表
   LOGIN_INFO: '/web/ml/mlogin/logininfo.json', // login
   GET_USER_SERVICE_INFO: '/web/um/userservice/getUserserviceInfo.json', // 商户信息
+  GET_USER_INFO_AUTH: '/web/um/userInfoAuth/getUserInfoAuth.json', // 查询认证状态
   QUERY_USER_INFO_DETAIL: '/web/um/userserviceinfo/queryUserinfoDetail.json', // 商户详细信息
   QUERY_INFUENCER_AND_CHILD: '/web/inf/infuencer/queryInfuencerAndChild.json', // 直播列表
   D_PRICE_CONF_TYPE: '/web/pte/dpriceConf/queryDpriceConfPageForMerchant.json', //佣金-商家规则
@@ -39,6 +40,9 @@ const MERCHANT = {
   LOGIN_MINI_CODE_BY_TWO_BUS: '/web/ml/mlogin/loginMiniCodeByTwoBus.json', // 获取太阳码第二步
   GET_RO_APP_CONFIG_PAGE_FOR_USER: '/web/tm/Proapp/getroappConfigPageForUser.json', // 获取协议
 }
+
+
+export const getUserInfoAuth = (params = {}) => post(MERCHANT.GET_USER_INFO_AUTH, params);
 
 export const getroappConfigPageForUser = (params = {}) => post(MERCHANT.GET_RO_APP_CONFIG_PAGE_FOR_USER, params);
 

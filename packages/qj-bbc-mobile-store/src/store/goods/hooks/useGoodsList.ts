@@ -210,10 +210,11 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
   }
 
   const handleChangeSearchContent = (e: any) => {
-    setSearchContent(e);
+    setSearchContent(e.detail.value);
   }
 
   const goGoodsSearch = () => {
+    setChosenClassifyIndex(0);
     init();
   }
 

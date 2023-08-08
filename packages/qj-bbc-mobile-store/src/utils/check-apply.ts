@@ -1,5 +1,5 @@
 import {getTaro} from '@brushes/utils';
-import {queryUserApplyPage, getUserserviceInfo} from 'qj-bbc-api';
+import {queryUserApplyPage, getUserInfoAuth} from 'qj-bbc-api';
 import {routerMap} from '../router-map';
 import {jumpLink} from './jump-link';
 import {stackLength} from "../store";
@@ -11,7 +11,7 @@ export const checkApply = async () => {
   if (!userInfoCode) return;
 
   try {
-    const checkResult = await getUserserviceInfo();
+    const checkResult = await getUserInfoAuth();
     const {dataState} = checkResult;
 
     if (dataState === 0) {
