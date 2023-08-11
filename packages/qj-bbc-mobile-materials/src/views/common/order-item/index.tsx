@@ -61,7 +61,11 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handl
     refundMeo,
     refundMoney,
     contractPumode,
-    contractId
+    contractId,
+    goodsLogmoney,
+    goodsPmoney,
+    contractInmoney,
+    dataBmoney,
   } = item;
 
   return (
@@ -96,12 +100,16 @@ const orderItemJsx: React.FC<any> = ({item, goFillIn, goOrderDetail, type, handl
             <View className={'return-order-price'}>退单金额：{refundMoney}</View>: null
         }
 
-        {/*<View className={'order-item-info-price'}>*/}
-        {/*  <View className={'blc'}>订单金额:￥1231</View>*/}
-        {/*  <View className={'blc'}>运费:￥1231</View>*/}
-        {/*  <View className={'blc'}>优惠:￥1231</View>*/}
-        {/*  <View className={'blc'}>实付:￥1231</View>*/}
-        {/*</View>*/}
+        {
+          type === 'order'?
+            <View className={'order-item-info-price'}>
+              <View className={'blc'}>订单金额:￥{contractInmoney}</View>
+              <View className={'blc'}>运费:￥{goodsLogmoney}</View>
+              <View className={'blc'}>优惠:￥{goodsPmoney}</View>
+              <View className={'blc'}>实付:￥{dataBmoney}</View>
+            </View>: null
+        }
+
       </View>
 
       {
