@@ -181,8 +181,18 @@
           align-items: center;
           padding: 4px 10px;
 
+          .inventory-minus,
+          .inventory-plus
+          {
+            width: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          }
+
           .fill-in {
-            width: 80px;
+            max-width: 70px;
             text-align: center;
           }
         }

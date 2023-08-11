@@ -34,7 +34,8 @@ const sideContentJsx: React.FC<any> = (
     price,
     shareShow,
     setShareShow,
-    handleShareShow
+    handleShareShow,
+    changeInventoryNum
   }) => {
 
   const {View, Image, WrapLoading} = useComponent();
@@ -87,6 +88,7 @@ const sideContentJsx: React.FC<any> = (
         changeGoodsInfoSubmit={changeGoodsInfoSubmit}
         changeInventory={changeInventory}
         changePrice={changePrice}
+        changeInventoryNum={changeInventoryNum}
       />
       <GoodsPopupFilter
         filterPopupShow={filterPopupShow}

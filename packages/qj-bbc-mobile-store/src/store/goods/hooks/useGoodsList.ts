@@ -63,7 +63,6 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
   const [shareShow, setShareShow] = useState(false);
 
 
-
   useEffect(() => {
     init();
   }, [refreshNum, chosenClassifyIndex]);
@@ -106,11 +105,11 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
         [searchParam]: searchContent
       }
 
-      if(upDownState !== null) {
+      if (upDownState !== null) {
         params.dataOpbillstate = upDownState
       }
 
-      if(chosenClassifyIndex != 0) {
+      if (chosenClassifyIndex != 0) {
         params.classtreeCode = classifyArr[chosenClassifyIndex].classtreeCode
       }
 
@@ -183,7 +182,7 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
       })
       setPopupShow(false);
       init()
-    }catch (err) {
+    } catch (err) {
       console.log(err)
     }
   }
@@ -196,11 +195,21 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
     setInventory(9999);
   }
 
+  const changeInventoryNum = (type: string) => {
+    console.log(199, type);
+    if (type === 'minus') {
+      if (inventory === 0) return
+      setInventory(prevState => prevState - 1)
+    } else if (type === 'plus') {
+      setInventory(prevState => prevState + 1)
+    }
+  }
+
   const changeInventory = (formVal: any) => {
     setInventory(formVal.detail.value);
   }
 
-  const changePrice = (formVal:any) => {
+  const changePrice = (formVal: any) => {
     setPrice(formVal.detail.value)
   }
 
@@ -218,7 +227,7 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
     init();
   }
 
-  const handleShareShow = (item:any) => {
+  const handleShareShow = (item: any) => {
     setShareShow(true);
     setChooseItem(item)
   }
@@ -258,6 +267,7 @@ export const useGoodsList = ({param = '', refreshNum = 0, config}: useGoodsListT
     changePrice,
     shareShow,
     setShareShow,
-    handleShareShow
+    handleShareShow,
+    changeInventoryNum
   }
 }

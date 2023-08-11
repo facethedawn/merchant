@@ -14,7 +14,8 @@ const goodsPopupContentJsx:React.FC<any> = (
     changeGoodsInfoSubmit,
     changeInventory,
     price,
-    changePrice
+    changePrice,
+    changeInventoryNum
   }) => {
 
   const {View, Popup, Image, Input} = useComponent();
@@ -47,7 +48,11 @@ const goodsPopupContentJsx:React.FC<any> = (
           <View className={'l-part'}>库存：</View>
           <View className={'inventory-item'}>
             <View className={'btn'} onClick={setInventoryMin}>归零</View>
-            <View className={'inventory'}><Input className={'fill-in'} type={'number'} value={inventory} onChange={changeInventory} /></View>
+            <View className={'inventory'}>
+              <View className={'inventory-minus'} onClick={() => changeInventoryNum('minus')}>-</View>
+              <Input className={'fill-in'} type={'number'} value={inventory} onChange={changeInventory} />
+              <View className={'inventory-plus'} onClick={() => changeInventoryNum('plus')}>+</View>
+            </View>
             <View className={'btn'} onClick={setInventoryMax}>9999</View>
           </View>
         </View>

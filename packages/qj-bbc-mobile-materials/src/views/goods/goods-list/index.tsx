@@ -40,7 +40,8 @@ const goodsListJsx: React.FC = () => {
     changePrice,
     shareShow,
     setShareShow,
-    handleShareShow
+    handleShareShow,
+    changeInventoryNum
   } = useGoodsList({param: '', refreshNum: 1, config});
 
   return (
@@ -87,6 +88,7 @@ const goodsListJsx: React.FC = () => {
           shareShow={shareShow}
           setShareShow={setShareShow}
           handleShareShow={handleShareShow}
+          changeInventoryNum={changeInventoryNum}
         />
       </View>
     </View>
