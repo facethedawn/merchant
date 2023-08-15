@@ -286,11 +286,12 @@ export const useApply = () => {
     }
 
     for (let i = 0; i < classify.length; i++) {
+      console.log(291, classifyList[classify[i]])
       arr.push({
         userinfoapplyQuaKey: "userinfoQua_classtreeCode",
-        userinfoapplyQuaVaule: classifyList[i]['code'],
+        userinfoapplyQuaVaule: classifyList[classify[i]]['code'],
         userinfoapplyQuaVaule1: "classtreeName",
-        userinfoapplyQuaVaule2: classifyList[i]['name']
+        userinfoapplyQuaVaule2: classifyList[classify[i]]['name']
       })
     }
 

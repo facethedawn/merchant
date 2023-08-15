@@ -3,7 +3,7 @@ import {useComponent, antdMobile} from '@brushes/simulate-component';
 import {UpdateImg} from "./update-img";
 import {ValidityPeriod} from "./validity-period";
 import {PickBrand} from "./pick-brand";
-// import {mobileRex, checkPwd } from "../../../../utils";
+import {mobileRex } from "../../../../../utils";
 import {applyContext} from '../../../apply-settle';
 import {PickProvince} from "./pick-province";
 import {PickCity} from "./pick-city";
@@ -278,6 +278,10 @@ const accountFormItemsApplyJsx: React.FC<any> = ({}) => {
               required: true,
               message: `联系人电话不能为空`
             },
+            {
+              pattern: mobileRex,
+              message: '请输入正确手机号'
+            }
           ]}
         >
           <Input

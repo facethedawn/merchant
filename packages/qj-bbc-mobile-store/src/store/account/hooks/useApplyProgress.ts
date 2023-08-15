@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {queryUserApplyPage} from 'qj-bbc-api';
 import {getTaro} from '@brushes/utils';
-import {jumpLink} from "../../../utils";
+import {jumpLink, jumpTabBar} from "../../../utils";
 import {routerMap} from "../../../router-map";
 
 
@@ -25,8 +25,13 @@ export const useApplyProgress = () => {
       const checkResult = await queryUserApplyPage({
         userinfoCode: userInfoCode
       })
+      const result = checkResult.list[0];
+      const {dataState} = result;
+      setInfo(result);
+      if(dataState === 1) {
+        jumpTabBar(routerMap.goodList);
+      }
 
-      setInfo(checkResult.list[0])
     }catch (err) {
       console.log(err)
     }

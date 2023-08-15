@@ -7,7 +7,7 @@ import {getHost} from '../../../utils';
 
 
 export const useShare = ({item}) => {
-  const {skuNo, goodsType, memberCode, goodsName, dataPic} = item;
+  const {skuNo, goodsType, memberCode, goodsName, dataPic, classtreeCode, brandCode} = item;
   const Taro = getTaro();
   const [shareShow, setShareShow] = useState(false);
   const saveImage = useRef('');
@@ -64,7 +64,7 @@ export const useShare = ({item}) => {
                     })
                   } else if (res.cancel) {
                     Taro.showToast({
-                      title: '保存失败！',
+                      title: '保存失败',
                       icon: 'close',
                       duration: 2000
                     })
@@ -109,8 +109,8 @@ export const useShare = ({item}) => {
     ctx.setFontSize(11);
     ctx.setFillStyle('#888E9B');
     ctx.fillText('长按识别小程序 立即购买', 117, 318);
+    ctx.draw(true,() => {
 
-    ctx.draw(() => {
       Taro.canvasToTempFilePath({
         x: 0,
         y: 0,
@@ -118,6 +118,7 @@ export const useShare = ({item}) => {
         height: 384,
         canvasId: 'canvas',
         success: (result) => {
+          console.log(122, result)
           saveImage.current = result.tempFilePath;
           // SetImage(result.tempFilePath)
         },
@@ -137,7 +138,7 @@ export const useShare = ({item}) => {
   const getSun = async () => {
     try {
       const scene = await getSetsupDisUtil({
-        value: `${skuNo}_${goodsType}_${memberCode}`
+        value: `${skuNo}_${memberCode}_1_${classtreeCode}_${brandCode}`
       })
 
       const result = await loginMiniCodeByTwoBus({

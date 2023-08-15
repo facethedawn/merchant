@@ -1,5 +1,5 @@
 // import {warrantyLogin, saveUmuserPhoneNoCodeByWX} from 'qj-bbc-api';
-import {getTaro, taroMessage} from '@brushes/utils';
+// import {getTaro, taroMessage} from '@brushes/utils';
 // import {errorCallback} from '@brushes/request';
 // import {get} from 'lodash-es';
 import {routerMap} from '../../../router-map';
@@ -9,17 +9,17 @@ import {useEffect} from "react";
 
 
 export const useAuth = () => {
-  const Taro = getTaro();
+  // const Taro = getTaro();
   useEffect(() => {
-    Taro.checkSession({
-      success: () => {
-        console.log('未失效')
-      },
-      fail: () => {
-        // taroMessage('授权已失效', 'error');
-        console.log('失效')
-      }
-    })
+    // Taro.checkSession({
+    //   success: () => {
+    //     console.log('未失效')
+    //   },
+    //   fail: () => {
+    //     // taroMessage('授权已失效', 'error');
+    //     console.log('失效')
+    //   }
+    // })
   }, [])
 
 
