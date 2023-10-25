@@ -6,3 +6,4 @@ export * from './upload-img';
 export * from './handleTree';
 export * from './Host';
 export * from './check-apply';
+export * from './handlePath';

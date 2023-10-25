@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import {getSetsupDisUtil, loginMiniCodeByTwoBus} from 'qj-bbc-api';
 import {getTaro} from "@brushes/utils";
 import {get} from 'lodash-es';
-import {getHost} from '../../../utils';
+import {handlePath} from '../../../utils';
 
 
 export const useShare = ({item}) => {
@@ -95,10 +95,9 @@ export const useShare = ({item}) => {
     ctx.fillRect(21, 21, 238, 342);
 
     const goodsImg = await Taro.getImageInfo({
-      src: `${getHost()}${dataPic}`,
+      src: handlePath(dataPic),
     })
     ctx.drawImage(goodsImg.path, 21, 32, 238, 227);
-
 
     await draw(baseImg, ctx)
 
