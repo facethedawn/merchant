@@ -1,7 +1,6 @@
 import React, {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
-import {getHost} from "qj-bbc-mobile-store";
-
+import { useFullPath } from '../../../hooks';
 
 
 const goodsItemJsx: React.FC<any> = ({item, handlePopupBtn, handleUpDown, handleShareShow}) => {
@@ -15,7 +14,7 @@ const goodsItemJsx: React.FC<any> = ({item, handlePopupBtn, handleUpDown, handle
       <View className={'goods-info-wrap'}>
         <View className={'l-part'}>
           <Image
-            src={`${getHost()}${dataPic}`}
+            src={useFullPath(dataPic)}
             mode='widthFix'
             className='img'
           />

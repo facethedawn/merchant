@@ -121,3 +121,22 @@
     margin-bottom: 16px;
   }
 }
+
+.adm-input-element {
+  overflow: hidden !important;
+  height: 30px !important;
+}
+
+.adm-list-item-content-main {
+  height: 54px;
+  padding: 0 !important;
+}
+
+.adm-list-item-content {
+  display: flex;
+  align-items: flex-start !important;
+}
+
+.code-item {
+  margin-top: -20px;
+}

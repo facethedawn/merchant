@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
 import {usePersonInfo} from 'qj-bbc-mobile-store';
-import {getHost} from "qj-bbc-mobile-store";
+import { useFullPath } from '../../../hooks';
 
 const personInfoJsx:React.FC = () => {
   const {View, Image} = useComponent();
@@ -45,7 +45,7 @@ const personInfoJsx:React.FC = () => {
           <View className={'l-part'}>商户LOGO</View>
           <View className={'r-part'}>
             <Image
-              src={`${getHost()}${userinfoLogo}`}
+              src={useFullPath(userinfoLogo)}
               mode='widthFix'
               className='img'
             />
@@ -93,7 +93,7 @@ const personInfoJsx:React.FC = () => {
           <View className={'l-part'}>营业执照图片</View>
           <View className={'r-part'}>
             <Image
-              src={`${getHost()}${userinfoCertUrl}`}
+              src={useFullPath(userinfoCertUrl)}
               mode='widthFix'
               className='img'
             />

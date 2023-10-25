@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
 import {MineList} from "./mine-list";
-import {getHost} from "qj-bbc-mobile-store";
+import { useFullPath } from '../../../../hooks';
 
 const mineDashboardJsx:React.FC<any> = ({config, merchantInfo}) => {
   const {View, Image} = useComponent();
@@ -14,7 +14,7 @@ const mineDashboardJsx:React.FC<any> = ({config, merchantInfo}) => {
       <View className={'mine-dashboard'}>
         <View className={'bg'}>
           <Image
-            src={`${getHost()}${userinfoLogo}`}
+            src={useFullPath(userinfoLogo)}
             className='merchant-logo'
           />
           <View className={'companyName'}>{userinfoCompname}</View>

@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import {useComponent} from '@brushes/simulate-component';
-import {getHost} from "qj-bbc-mobile-store";
+import { useFullPath } from '../../../hooks';
 
 const goodsItemLiteJsx: React.FC<any> = ({item}) => {
   const {View, SmoothView, Image} = useComponent();
@@ -15,7 +15,7 @@ const goodsItemLiteJsx: React.FC<any> = ({item}) => {
   return (
     <View className={'goods-item-lite'}>
       <Image
-        src={`${getHost()}${dataPic}`}
+        src={useFullPath(dataPic)}
         mode='widthFix'
         className='img'
       />

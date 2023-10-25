@@ -16,7 +16,7 @@ const CodeWrapJsx: React.FC<codeWrapType> = ({form, type}) => {
   return (
     <View>
       {
-        timeFlag ? <View>倒计时 {time} 秒</View> : <View onClick={getMobile}>获取验证码</View>
+        timeFlag ? <View>倒计时 {time} 秒</View> : <View onClick={getMobile} className={'code-item'}>获取验证码</View>
       }
     </View>
   )

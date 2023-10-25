@@ -1,21 +1,12 @@
 import React, {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
 import {useGoodsRules} from "qj-bbc-mobile-store";
-import {getHost} from "qj-bbc-mobile-store";
+import { useFullPath } from '../../../../../hooks';
 
 const goodsRulesJsx: React.FC = () => {
   const {View, ScrollView, Image} = useComponent();
 
   const {onScroll, list} = useGoodsRules();
-
-  console.log(10,list)
-
-  const handleUrl = (url: string) => {
-    if(url.indexOf('http')>=0) {
-      return url
-    }
-    return `${getHost()}${url}`
-  }
 
   return (
     <View className={'goods-rules'}>
@@ -27,7 +18,7 @@ const goodsRulesJsx: React.FC = () => {
             const {dpriceConfPicurl, dpriceConfValuename, dpriceConfValue, dpriceConfPrice, dataState} = item
             return <View className={'goods-rules-item'} key={index}>
               <Image
-                src= {handleUrl(dpriceConfPicurl)}
+                src= {useFullPath(dpriceConfPicurl)}
                 mode='widthFix'
                 className='img'
               />

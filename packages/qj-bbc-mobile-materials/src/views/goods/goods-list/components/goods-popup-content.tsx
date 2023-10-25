@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import {useComponent} from "@brushes/simulate-component";
-import {getHost} from "qj-bbc-mobile-store";
+import { useFullPath } from '../../../../hooks';
 
 
 const goodsPopupContentJsx:React.FC<any> = (
@@ -27,7 +27,7 @@ const goodsPopupContentJsx:React.FC<any> = (
 
         <View className={'goods-list-popup-item'}>
           <Image
-            src={`${getHost()}${dataPic}`}
+            src={useFullPath(dataPic)}
             mode='widthFix'
             className='l-part'
           />
